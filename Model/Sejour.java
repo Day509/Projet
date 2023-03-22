@@ -1,4 +1,4 @@
-import java.util.*;;
+import java.util.*;
 
 
 public class Sejour extends Reservation {
@@ -13,7 +13,7 @@ public class Sejour extends Reservation {
         System.out.println(facture);
     }
 
-    public void ajoutFact(Double montant, String nomProd){
+    public void ajoutFact(String nomProd, Double montant){
         facture.put(nomProd, montant);
     }
 }

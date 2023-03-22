@@ -13,10 +13,8 @@ public class Chambre {
         this.id = idChambre;
         this.Etage = chambre.ordinal() + 1;
         this.Prix = ((chambre.ordinal() + 1) * 1.7) * 100; //exemple
-        this.Etage = chambre.ordinal() + 1;
+        this.nbrLits = chambre.ordinal() + 1;
         idChambre++;        
     }
-
-    
     
 }
