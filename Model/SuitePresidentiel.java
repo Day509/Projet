@@ -1,20 +1,10 @@
 
-import java.util.*;
-
 /**
  * 
  */
 public class SuitePresidentiel extends Chambre {
 
-    /**
-     * Default constructor
-     */
     public SuitePresidentiel() {
+        super(Chambre.typeChambre.SuitePresidentiel);
     }
-
-    /**
-     * 
-     */
-    public int nbrLit = 4;
-
 }

@@ -1,20 +1,9 @@
 
-import java.util.*;
 
-/**
- * 
- */
 public class Simple extends Chambre {
-
-    /**
-     * Default constructor
-     */
+    
     public Simple() {
+        super(Chambre.typeChambre.Simple);
     }
-
-    /**
-     * 
-     */
-    public int nbrLit = 1;
 
 }
