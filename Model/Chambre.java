@@ -25,7 +25,7 @@ public class Chambre {
     /**
      * 
      */
-    public double PrixParNuit;
+    public double Prix;
 
     /**
      * 
@@ -35,7 +35,7 @@ public class Chambre {
     /**
      * 
      */
-    public Reservation listReserv;
+    public Set<Reservation> listReserv;
 
     /**
      * 

@@ -22,14 +22,10 @@ public class Options {
      */
     public String nom;
 
-    /**
-     * 
-     */
-    public Set<SuitePresidentiel> SuiteOption;
 
     /**
      * 
      */
-    public Set<SuiteNormale> SuiteOption;
+    public Set<Suite> listSuite;
 
 }

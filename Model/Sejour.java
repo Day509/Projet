@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Sejour extends Reservation {
+public class Sejour {
 
     /**
      * Default constructor
@@ -20,11 +20,6 @@ public class Sejour extends Reservation {
     /**
      * 
      */
-    public struct listConso;
-
-    /**
-     * 
-     */
-    public Set<Consommation> nbrConso;
+    public Reservation res;
 
 }
