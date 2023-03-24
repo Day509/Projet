@@ -9,7 +9,8 @@ public class Consommation {
     /**
      * Default constructor
      */
-    public Consommation() {
+    public consommation(String produit,Double prix, int qte){
+
     }
 
     /**

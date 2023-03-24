@@ -16,7 +16,7 @@ public class Chambre {
      * 
      */
     public int idChambre;
-
+public boolean dispo;
     /**
      * 
      */
