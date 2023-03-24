@@ -17,4 +17,9 @@ public class SuitePresidentiel extends Chambre {
      */
     public int nbrLit = 4;
 
+    /**
+     * 
+     */
+    public Options listOption;
+
 }

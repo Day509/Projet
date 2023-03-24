@@ -27,4 +27,9 @@ public class Client {
      */
     public int budget;
 
+    /**
+     * 
+     */
+    public Set<Reservation> listReserv;
+
 }

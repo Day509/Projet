@@ -27,4 +27,14 @@ public class Hotel {
      */
     public String Entreprise;
 
+    /**
+     * 
+     */
+    public int Nbr_chambre;
+
+    /**
+     * 
+     */
+    public Set<Chambre> listChambres;
+
 }
