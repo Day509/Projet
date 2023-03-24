@@ -27,4 +27,9 @@ public class Consommation {
      */
     public int Quantite;
 
+    /**
+     * 
+     */
+    public Sejour listConso;
+
 }

@@ -17,4 +17,9 @@ public class SuiteNormale extends Chambre {
      */
     public int nbrLit = 3;
 
+    /**
+     * 
+     */
+    public Options listOption;
+
 }

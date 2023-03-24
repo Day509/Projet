@@ -25,11 +25,21 @@ public class Chambre {
     /**
      * 
      */
-    public double Prix;
+    public double PrixParNuit;
 
     /**
      * 
      */
     public int nbrLits;
+
+    /**
+     * 
+     */
+    public Reservation listReserv;
+
+    /**
+     * 
+     */
+    public Hotel Hotel;
 
 }

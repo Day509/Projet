@@ -17,4 +17,14 @@ public class Sejour extends Reservation {
      */
     public double Facture;
 
+    /**
+     * 
+     */
+    public struct listConso;
+
+    /**
+     * 
+     */
+    public Set<Consommation> nbrConso;
+
 }

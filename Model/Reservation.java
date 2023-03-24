@@ -27,4 +27,19 @@ public class Reservation {
      */
     public int NbPersonne ;
 
+    /**
+     * 
+     */
+    public int IdResa;
+
+    /**
+     * 
+     */
+    public Set<Chambre> listChambres;
+
+    /**
+     * 
+     */
+    public Client listClient;
+
 }
