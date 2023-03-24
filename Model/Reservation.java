@@ -10,16 +10,18 @@ public class Reservation {
     private static int idResa = 1;
     private int id;
     Client resaOwn;
+    int[] cham;
     Date DateDebut; 
     Date DateDeFin;
     int NbPersonne;
 
-    public Reservation(Client client, int resa, int[] cham, Date deb, Date fin, int nbrPersonne) {
-        resaOwn = client;
-        this.id = idResa;
-        DateDebut = deb;
-        DateDeFin = fin;
-        NbPersonne = nbrPersonne;
+    public Reservation(Client client, int nbrcham, Date deb, Date fin, int np) { //Modif complete 
+     this.id = idResa;
+     this.resaOwn = client;
+     this.cham = new int[nbrcham];
+     this.DateDebut = deb;
+     this.DateDeFin = fin;
+     this.NbPersonne =  np;
     }
 
 }
