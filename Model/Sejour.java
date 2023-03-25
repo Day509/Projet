@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Sejour extends Reservation {
+public class Sejour {
 
     /**
      * Default constructor

@@ -4,18 +4,18 @@ import java.util.*;
 /**
  * 
  */
-public class SuiteNormale extends Chambre {
+public class Suite extends Chambre {
 
     /**
      * Default constructor
      */
-    public SuiteNormale() {
+    public Suite() {
     }
 
     /**
      * 
      */
-    public int nbrLit = 3;
+    public Set<Options> listOption;
 
     /**
      * 
