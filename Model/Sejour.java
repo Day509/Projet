@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Sejour extends Reservation {
+public class Sejour {
 
     /**
      * Default constructor
@@ -16,5 +16,10 @@ public class Sejour extends Reservation {
      * 
      */
     public double Facture;
+
+    /**
+     * 
+     */
+    public Reservation res;
 
 }

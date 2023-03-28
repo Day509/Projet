@@ -25,6 +25,11 @@ public class Hotel {
     /**
      * 
      */
-    public String Entreprise;
+    public Set<Chambre> listChambres;
+
+    /**
+     * 
+     */
+    public Set<Client> listClient;
 
 }

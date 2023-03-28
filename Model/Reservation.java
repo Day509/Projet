@@ -25,6 +25,16 @@ public class Reservation {
     /**
      * 
      */
-    public int NbPersonne ;
+    public Chambre chambre;
+
+    /**
+     * 
+     */
+    public Client Client;
+
+    /**
+     * 
+     */
+    public Sejour sejour;
 
 }
