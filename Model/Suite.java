@@ -17,9 +17,4 @@ public class Suite extends Chambre {
      */
     public Set<Options> listOption;
 
-    /**
-     * 
-     */
-    public Options listOption;
-
 }

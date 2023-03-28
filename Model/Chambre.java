@@ -25,7 +25,7 @@ public class Chambre {
     /**
      * 
      */
-    public double PrixParNuit;
+    public double Prix;
 
     /**
      * 
@@ -35,11 +35,26 @@ public class Chambre {
     /**
      * 
      */
-    public Reservation listReserv;
+    public Vector<Reservation> listReserv = new Vector<Reservation>();
 
     /**
      * 
      */
     public Hotel Hotel;
 
+    public Chambre(int id, int e, double p, int nbn) {
+        this.Etage = e;
+        this.idChambre = id;
+        this.Prix = p;
+        this.nbrLits = nbn;
+
+    }
+
+    public void setHotel(Hotel h) {
+        this.Hotel = h;
+    }
+    public void ajoutResa(Reservation r){
+        listReserv.add(r);
+    }
+    public void annuleResa(Reservation r)
 }

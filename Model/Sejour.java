@@ -20,11 +20,6 @@ public class Sejour {
     /**
      * 
      */
-    public struct listConso;
-
-    /**
-     * 
-     */
-    public Set<Consommation> nbrConso;
+    public Reservation res;
 
 }

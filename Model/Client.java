@@ -32,9 +32,4 @@ public class Client {
      */
     public Hotel Hotel;
 
-    /**
-     * 
-     */
-    public Set<Reservation> listReserv;
-
 }

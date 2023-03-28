@@ -32,14 +32,4 @@ public class Hotel {
      */
     public Set<Client> listClient;
 
-    /**
-     * 
-     */
-    public int Nbr_chambre;
-
-    /**
-     * 
-     */
-    public Set<Chambre> listChambres;
-
 }

@@ -37,19 +37,4 @@ public class Reservation {
      */
     public Sejour sejour;
 
-    /**
-     * 
-     */
-    public int IdResa;
-
-    /**
-     * 
-     */
-    public Set<Chambre> listChambres;
-
-    /**
-     * 
-     */
-    public Client listClient;
-
 }
