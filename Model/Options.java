@@ -1,44 +1,48 @@
 
 import java.util.*;
 
-/**
- * 
- */
+
 public class Options {
 
-    private String nom;
     private double prix;
-    private boolean estSelectionnee;
+    private String nom; 
+    private Vector<Suite> listSuite;
     
-    public Options(String nom, double prix) {
-        this.nom = nom;
-        this.prix = prix;
-        this.estSelectionnee = false; // Par défaut l'option n'est pas sélectionnée
+    public Options(double prix, String nom) {
+    
+    this.prix = prix; 
+    this.nom = nom; 
+    this.listSuite = new Vector<Suite>();
+
     }
-    
-    public String getNom() {
-        return nom;
-    }
-    
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-    
-    public double getPrix() {
+
+    public double getPrixOption() {
         return prix;
     }
-    
-    public void setPrixSupplementaire(double prix) {
+
+    public void setPrixOption(double prix) {
         this.prix = prix;
     }
-    
-    public boolean estSelectionnee() {
-        return estSelectionnee;
+ 
+    public String getNomOption() {
+        return nom;
     }
-    
-    public void setSelection(boolean estSelectionnee) {
-        this.estSelectionnee = estSelectionnee;
-    }
-    
 
+    public void setNomOption(String nom) {
+        this.nom = nom;
+    }
+  
+    public Vector<Suite> getListSuite(){
+        return listSuite;
+    }
+    public void setListSuite(Vector<Suite> listSuite) {
+        this.listSuite = listSuite;
+    }
+    public void ajouterOption(Suite option){
+        listSuite.add(option);
+    }
+    public void annulerOption(Suite option) {
+        listSuite.remove(option);
+    }
 }
+

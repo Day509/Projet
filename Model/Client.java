@@ -1,29 +1,29 @@
 
 import java.util.*;
 
-/**
- * 
- */
 public class Client {
-
-    private String nom; 
+    private String nom;
     private String prenom;
-    private String adresse;
     private String email;
+    private String adresse;
     private String telephone;
+    private Vector<Reservation> listReservations;
+    private Hotel hotel;
 
- 
-    public Client(String nom, String prenom, String adresse, String email, String telephone) {
-        this.nom = nom; 
+    public Client(String nom, String prenom, String email, String adresse, String telephone, Hotel hotel) {
+        this.nom = nom;
         this.prenom = prenom;
-        this.adresse = adresse;
         this.email = email;
+        this.adresse = adresse;
         this.telephone = telephone;
+        this.listReservations = new Vector<Reservation>();
+        this.hotel = hotel;
     }
 
     public String getNom() {
         return nom;
     }
+
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -35,46 +35,46 @@ public class Client {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
-    
-    public String getAdresse() {
-    return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-    this.adresse = adresse;
-    }
 
     public String getEmail() {
-    return email;
+        return email;
     }
 
     public void setEmail(String email) {
-    this.email = email;
+        this.email = email;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
     public String getTelephone() {
-    return telephone;
+        return telephone;
     }
 
     public void setTelephone(String telephone) {
-    this.telephone = telephone;
-    }
-
-    public void afficherInfosClient() {
-        System.out.println("Nom : " + nom);
-        System.out.println("Prénom : " + prenom);
-        System.out.println("Adresse : " + adresse);
-        System.out.println("Email : " + email);
-        System.out.println("Téléphone : " + telephone);
+        this.telephone = telephone;
     }
     
+    public Vector<Reservation> getListReservations() {
+        return listReservations;
+    }
 
-
-        public static void main(String[] args) {
-            Client client1 = new Client("d", "a", "f", "@@@@", "05436");
-            client1.setTelephone("03541");
-            client1.setNom("harish");
-            client1.afficherInfosClient();
-        }
+    public void setListReservations(Vector<Reservation> listReservations) {
+        this.listReservations = listReservations;
     }
     
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+
+}
