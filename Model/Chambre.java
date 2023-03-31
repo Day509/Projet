@@ -1,9 +1,5 @@
-
 import java.util.*;
 
-/**
- * 
- */
 public class Chambre {
     
     public int idChambre;
