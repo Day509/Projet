@@ -1,20 +1,29 @@
-
-
+import java.util.*;
 
 public class Chambre {
-    public enum typeChambre {Simple, Double, SuiteNormale, SuitePresidentiel};
-    private static int idChambre = 1;
-    private int id; 
-    private int Etage;
-    private double Prix;
-    private int nbrLits;
     
-    public Chambre(typeChambre chambre) {
-        this.id = idChambre;
-        this.Etage = chambre.ordinal() + 1;
-        this.Prix = ((chambre.ordinal() + 1) * 1.7) * 100; //exemple
-        this.nbrLits = chambre.ordinal() + 1;
-        idChambre++;        
+    public int idChambre;
+    public int Etage;
+    public double Prix;
+    public int nbrLits;
+    public Vector<Reservation> listReserv = new Vector<Reservation>();
+    public Hotel Hotel;
+
+    public Chambre(int id, int e, double p, int nbn) {
+        this.Etage = e;
+        this.idChambre = id;
+        this.Prix = p;
+        this.nbrLits = nbn;
+
+    }   
+
+    public void setHotel(Hotel h) {
+        this.Hotel = h;
     }
-    
+
+    public void ajoutResa(Reservation r) {
+        listReserv.add(r);
+    }
+
+    public void annuleResa(Reservation r){}
 }
