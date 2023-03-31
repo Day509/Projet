@@ -38,4 +38,8 @@ public class Reservation {
     public int getResaNum() {
         return this.id;
     }
+
+    public boolean isIntersect(LocalDate deb, LocalDate fin){
+        return false; //Verifie l'intersecton de 2 intervalles
+    }
 }

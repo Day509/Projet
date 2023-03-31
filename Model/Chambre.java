@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.*;
 
 public class Chambre {
@@ -26,4 +27,8 @@ public class Chambre {
     }
 
     public void annuleResa(Reservation r){}
+
+    public boolean isFree(LocalDate deb, LocalDate fin){
+        return false; //retourne l'etat de la chambre
+    }
 }

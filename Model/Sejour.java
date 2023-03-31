@@ -1,4 +1,5 @@
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -7,27 +8,34 @@ import java.util.*;
 public class Sejour {
 
     public double Facture;
-
+    Vector<Consommation> listConso = new Vector<Consommation>();
     public Reservation res;
 
     public Sejour(Reservation resa) {
         this.res = resa;
     }
 
-    public Date getStartdate() {
-        return this.res.DateDebut;
+    public LocalDate getStartdate() {
+        return res.DateDebut;
     }
 
-    public Date getEnddate() {
-        return this.res.DateDeFin;
+    public LocalDate getEnddate() {
+        return res.DateDeFin;
     }
 
     public Client getClient() {
-        return this.res.Client;
+        return res.Client;
     }
 
     public int getResaNum() {
-        return this.res.id;
+        return res.id;
     }
 
+    public void addConso(Consommation c){
+        listConso.add(c);
+    }
+
+    public double getPrice(){
+        return 0.0; // Cumule des conso => somme des prix
+    }
 }
