@@ -1,9 +1,6 @@
 
 import java.util.*;
 
-/**
- * 
- */
 public class Suite extends Chambre {
 
     public Vector<Options> listOption;
@@ -15,6 +12,10 @@ public class Suite extends Chambre {
 
     public Vector<Options> getOption() {
         return this.listOption;
+    }
+
+    public int getNumOpt(){
+        return listOption.size();
     }
 
     public void setOption(Options s) {

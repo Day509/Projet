@@ -1,5 +1,6 @@
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 /**
@@ -38,4 +39,9 @@ public class Sejour {
     public double getPrice(){
         return 0.0; // Cumule des conso => somme des prix
     }
+    public long lenOfStay(){
+        return ChronoUnit.DAYS.between(getStartdate(), getEnddate());
+    }
+
+    
 }

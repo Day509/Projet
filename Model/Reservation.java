@@ -1,6 +1,8 @@
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
+import Chambre.isFree;
 
 /**
  * 
@@ -13,7 +15,6 @@ public class Reservation {
     public LocalDate DateDeFin;
     public Vector<Chambre> chambre;
     public Client Client;
-    public Sejour sejour;
 
     public Reservation(Client client, Chambre[] cham, LocalDate deb, LocalDate fin, int nbCham) {
         this.Client = client;
@@ -21,6 +22,7 @@ public class Reservation {
         this.chambre = new Vector<Chambre>(nbCham);
         this.DateDebut = deb;
         this.DateDeFin = fin;
+        idResa++;
     }
 
     public LocalDate getStartdate() {
@@ -39,7 +41,33 @@ public class Reservation {
         return this.id;
     }
 
-    public boolean isIntersect(LocalDate deb, LocalDate fin){
+    public void cancelResa(Reservation r){
+       r.chambre.removeAll(chambre);
+    }
+
+    public boolean modifyDate(LocalDate newB, LocalDate newE){ // Permet de modifier les dates de sa reservation en verifiant la disponibilité des chambres
+        for (Chambre room : chambre) {
+            if (room.isFree(newB, newE) == false) {
+                return false;
+            }
+            DateDebut = newB;
+            DateDeFin = newE;
+        }
+        return true;
+    }
+
+    public long lenOfStay(){
+        return ChronoUnit.DAYS.between(getStartdate(), getEnddate());
+    }
+
+    public boolean isIntersect(LocalDate deb, LocalDate fin){ // Verifie l'intersection entre 2 intervalles de date
+        for (Chambre room : chambre) {
+            for (Reservation r : room.listReserv) {
+                if (r.id != this.id && r.getStartdate().isBefore(fin) && r.getEnddate().isAfter(deb)) {
+                    return true;
+                }
+            }
+        }
         return false; //Verifie l'intersecton de 2 intervalles
     }
 }
