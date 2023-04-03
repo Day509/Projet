@@ -79,5 +79,23 @@ public class Hotel {
     public Vector<Chambre> getFreeRooms(LocalDate deb, LocalDate fin){
         return null; //parcour les chambre et renvoi les chambres dispo
     }
+    
+    
+    
+    public void ajouterChambre(Chambre chambre){
+
+    }
+
+    public void ajouterClient(Client client){
+
+    }
+
+    public void ajouterClient(Client client){
+
+    }
+
+
+    // TOUS SE QUE VOUS AVEZ COMME METHODE FACTURE OU UN TRUC DU GENRE DOIT ETRES SUPRIMER CAR C DES CALCULE ...
+
 
 }
