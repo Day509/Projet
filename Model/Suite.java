@@ -22,4 +22,16 @@ public class Suite extends Chambre {
         this.listOption.add(s);
     }
 
+    public int getNumRoom(){ // recupérer le numéro de la chambre
+        return this.idChambre;
+    }
+
+    public LocalDate getLastReservationDate(){
+        if (this.listReserv.isEmpty()) {
+            return null;
+        }
+        Reservation r  = listReserv.lastElement();
+        return r.getEnddate();
+    }
+
 }
