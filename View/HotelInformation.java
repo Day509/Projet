@@ -1,13 +1,9 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.GridLayout;
+package View;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class HotelInformation {
 
@@ -34,7 +30,7 @@ public class HotelInformation {
         list.add(jtf);
     }
 
-    private void create(String strTitle) {
+    void create(String strTitle) {
         panel.setLayout(new GridLayout(0, 1));
         addField("Nom de l'hôtel:");
         addField("Adresse de l'hôtel:");
