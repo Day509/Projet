@@ -1,18 +1,18 @@
+package View;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Name {
+public class Name extends JPanel {
     
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Name");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(500, 300));
+    public Name() {
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(500, 300));
         
         // Titre centré avec de l'espace avant
         JLabel title = new JLabel("Nom du logiciel");
@@ -28,12 +28,14 @@ public class Name {
         buttonPanel.add(button1);
         buttonPanel.add(button2);
         
-        // Ajout des éléments dans la fenêtre
-        frame.add(titlePanel, BorderLayout.NORTH);
-        frame.add(buttonPanel, BorderLayout.CENTER);
+        // Ajout des éléments dans le panel
+        add(titlePanel, BorderLayout.NORTH);
+        add(buttonPanel, BorderLayout.CENTER);
         
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        // Ajout de l'action du bouton Ajouter un hôtel
+        button2.addActionListener(e -> {
+            View view = (View) getTopLevelAncestor();
+            view.showPanel("hotelInfoPanel");
+        });
     }
 }
