@@ -1,3 +1,6 @@
+package Model;
+
+
 import java.time.LocalDate;
 import java.util.*;
 
@@ -33,11 +36,11 @@ public class Hotel {
 
 
     public String getAdresse() {
-        return nom;
+        return adresse;
     }
 
-    public void getAdresse(String nom) {
-        this.nom = nom;
+    public void setAdresse(String a) {
+        this.adresse = a;
     }
 
 
@@ -90,11 +93,10 @@ public class Hotel {
 
     }
 
-    public void ajouterClient(Client client){
 
+    public static void main(String[] args) {
+        
     }
-
-
     // TOUS SE QUE VOUS AVEZ COMME METHODE FACTURE OU UN TRUC DU GENRE DOIT ETRES SUPRIMER CAR C DES CALCULE ...
 
 

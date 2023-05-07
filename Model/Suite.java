@@ -1,5 +1,7 @@
+package Model;
 
 import java.util.*;
+
 
 /**
  * 
@@ -8,8 +10,8 @@ public class Suite extends Chambre {
 
     public Vector<Options> listOption;
 
-    public Suite(int numRoom, int floor, double price, int nbBed, Vector<Options> options) {
-        super(numRoom, floor, price, nbBed);
+    public Suite(int numRoom, int floor, double price, int nbBed, Vector<Options> options, Hotel hotel) {
+        super(numRoom, floor, price, nbBed, hotel);
         this.listOption = new Vector<Options>(options);
     }
 
