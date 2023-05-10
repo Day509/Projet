@@ -14,7 +14,8 @@ public class RoomPage extends JPanel {
 
     private final int NB_CHAMBRES = 10; // nombre de chambres
     private final int NB_JOURS = 8; // nombre de jours à afficher
-    private final String[] JOURS_SEMAINE = {"", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim" }; // jours de la semaine
+    private final String[] JOURS_SEMAINE = { "", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim" }; // jours de la
+                                                                                                    // semaine
     private final int TAILLE_CASE = 40; // taille des cases du tableau
     LocalDate date;
     JTable table;
@@ -22,21 +23,27 @@ public class RoomPage extends JPanel {
     public RoomPage() {
         setLayout(new BorderLayout());
         // création du panneau pour le taableau
+        String[] entetes = new String[NB_JOURS];
         LocalDate date = LocalDate.now();
+        entetes[0] = JOURS_SEMAINE[0];
+        for (int i = 1; i < NB_JOURS; i++) {
+
+            String entete = JOURS_SEMAINE[(date.getDayOfWeek().getValue() - 1 + i) % 7] + " " +
+                    date.plusDays(i).getDayOfMonth() + "/" + date.plusDays(i).getMonthValue();
+            entetes[i] = entete;
+        }
+
         DefaultTableModel model = new DefaultTableModel(NB_CHAMBRES, NB_JOURS);
-        model.setColumnIdentifiers(JOURS_SEMAINE);
+        model.setColumnIdentifiers(entetes);
         // ajout des jours de la semaine dans la première ligne
-        
 
         // ajout des cellules pour chaque chambre
         for (int i = 0; i < NB_CHAMBRES; i++) {
-            model.setValueAt("Chambre " + (i+1), i, 0);
+            model.setValueAt("Chambre " + (i + 1), i, 0);
             for (int j = 1; j < NB_JOURS; j++) {
                 model.setValueAt("", i, j);
             }
         }
-        
-        
 
         // création du tableau avec le modèle
         table = new JTable(model);
