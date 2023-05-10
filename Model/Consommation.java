@@ -1,5 +1,4 @@
-
-import java.util.*;
+package Model;
 
 public class Consommation {
 

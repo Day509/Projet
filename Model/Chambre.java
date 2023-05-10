@@ -1,4 +1,4 @@
-
+package Model;
 import java.util.Vector;
 
 public class Chambre {

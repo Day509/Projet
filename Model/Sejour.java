@@ -1,11 +1,13 @@
-import java.util.*;
+package Model;
 
+
+import java.util.*;
 
 public class Sejour extends Reservation {
     Dictionary<String, Double> facture = new Hashtable<String, Double>();
     Reservation reservation;
     
-    public Sejour(int id, Client client, int cham, Date deb, Date fin, int np) {
+    public Sejour(int id, Client client, Chambre[] cham, Date deb, Date fin, int np) {
         super(client, cham, deb, fin, np);
     }
 
