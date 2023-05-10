@@ -4,13 +4,13 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-public class FenetreHotel extends JPanel {
+public class HotelInformation extends JPanel {
     private JTextField txtNom;
     private JTextField txtAdresse;
     private JTextField txtNbChambres;
     private JTextField txtNbEtages;
 
-    public FenetreHotel() {
+    public HotelInformation() {
         setLayout(new GridBagLayout());
         setPreferredSize(new Dimension(800, 600)); // Ajustez les dimensions selon vos besoins
         GridBagConstraints constraints = new GridBagConstraints();
@@ -120,14 +120,5 @@ public class FenetreHotel extends JPanel {
             g.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
         }
     }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Fenêtre de l'hôtel");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.getContentPane().add(new FenetreHotel());
-            frame.pack();
-            frame.setVisible(true);
-        });
     }
 }
