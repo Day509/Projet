@@ -14,8 +14,7 @@ public class RoomPage extends JPanel {
 
     private final int NB_CHAMBRES = 10; // nombre de chambres
     private final int NB_JOURS = 8; // nombre de jours à afficher
-    private final String[] JOURS_SEMAINE = { "", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim" }; // jours de la
-                                                                                                    // semaine
+    private final String[] JOURS_SEMAINE = { "", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim" }; // jours de la semaine
     private final int TAILLE_CASE = 40; // taille des cases du tableau
     LocalDate date;
     JTable table;
