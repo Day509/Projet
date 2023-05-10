@@ -17,7 +17,7 @@ public class Reservation {
 
     public Reservation(Client client, Chambre[] cham, Date deb, Date fin, int nbCham) {
         this.Client = client;
-        this.id = idResa;
+        this.id = idResa++;
         this.chambre = new Chambre[nbCham];
         this.DateDebut = deb;
         this.DateDeFin = fin;
