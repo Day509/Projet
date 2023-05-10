@@ -25,7 +25,7 @@ public class RoomPage extends JPanel {
 
     public RoomPage() {
         setLayout(new BorderLayout());
-        // création du panneau pour le tableau
+        // création du panneau pour le taableau
         LocalDate date = LocalDate.now();
         DefaultTableModel model = new DefaultTableModel(NB_CHAMBRES, NB_JOURS);
         model.setColumnIdentifiers(JOURS_SEMAINE);
