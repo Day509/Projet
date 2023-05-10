@@ -10,12 +10,18 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-public class ReservPage extends JPanel {
+import Model.Hotel;
+import test.Generate;
 
-    private final int NB_COLONNES = 8; // nombre de colonnes à afficher
-    private final int NB_LIGNES = 27; // nombre de lignes à afficher
+public class ReservPage extends JPanel {
+    Hotel hotel;
+    Generate g = new Generate(new Hotel("Hotel", "blabla"));
+
+    private int NB_COLONNES = 8; // nombre de colonnes à afficher
+    private int NB_LIGNES = g.getAllReservations().size(); // nombre de lignes à afficher
     
     public ReservPage() {
+        
         setLayout(new BorderLayout());
         
         // création du panneau pour le tableau
@@ -26,14 +32,14 @@ public class ReservPage extends JPanel {
         String[] titresColonnes = {"N°Resa", "N°Chambre", "Nom", "Prénom", "Arrivée", "Départ", "Status", "Facture"};
         Object[][] donneesTableau = new Object[NB_LIGNES][NB_COLONNES];
         for (int i = 0; i < NB_LIGNES; i++) {
-            donneesTableau[i][0] = "12345";
-            donneesTableau[i][1] = "Chambre " + (i + 1);
-            donneesTableau[i][2] = "Dupont";
-            donneesTableau[i][3] = "Jean";
-            donneesTableau[i][4] = "01/06/2023";
-            donneesTableau[i][5] = "05/06/2023";
+            donneesTableau[i][0] = g.getAllReservations().get(i).getReservation().id;
+            donneesTableau[i][1] = i; //g.getAllReservations().get(i).getReservations().get(i).getChambre().getIdChambre();
+            donneesTableau[i][2] = g.getAllReservations().get(i).getReservation().getClient().getNom();
+            donneesTableau[i][3] = g.getAllReservations().get(i).getReservation().getClient().getPrenom();
+            donneesTableau[i][4] = g.getAllReservations().get(i).getReservation().getStartdate();
+            donneesTableau[i][5] = g.getAllReservations().get(i).getReservation().getEnddate();
             donneesTableau[i][6] = "En cours";
-            donneesTableau[i][7] = "50 €";
+            donneesTableau[i][7] = "Facture";
         }
         
         // création du modèle de tableau
