@@ -1,41 +1,59 @@
 package View;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 
 public class Name extends JPanel {
-    
+
     public Name() {
-        setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(500, 300));
+        setLayout(new GridBagLayout());
         
+
         // Titre centré avec de l'espace avant
-        JLabel title = new JLabel("Nom du logiciel");
-        title.setFont(new Font("Arial", Font.BOLD, 24));
-        title.setHorizontalAlignment(JLabel.CENTER);
-        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 20));
-        titlePanel.add(title);
-        
+        JLabel title = new JLabel("HotelHub");
+        title.setFont(new Font("Arial", Font.BOLD, 36)); // Police de caractères agrandie
+        GridBagConstraints titleConstraints = new GridBagConstraints();
+        titleConstraints.gridx = 0;
+        titleConstraints.gridy = 0;
+        titleConstraints.gridwidth = 2;
+        titleConstraints.insets = new Insets(0, 0, 40, 0); // Espace avant augmenté
+        titleConstraints.anchor = GridBagConstraints.PAGE_START;
+        add(title, titleConstraints);
+
         // Boutons Se connecter et Ajouter un hôtel
         JButton button1 = new JButton("Se connecter");
+        button1.setFont(new Font("Arial", Font.BOLD, 24));
         JButton button2 = new JButton("Ajouter un hôtel");
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 0));
-        buttonPanel.add(button1);
-        buttonPanel.add(button2);
-        
-        // Ajout des éléments dans le panel
-        add(titlePanel, BorderLayout.NORTH);
-        add(buttonPanel, BorderLayout.CENTER);
-        
-        // Ajout de l'action du bouton Ajouter un hôtel
-        button2.addActionListener(e -> {
-            View view = (View) getTopLevelAncestor();
-            view.showPanel("hotelInfoPanel");
+        button2.setFont(new Font("Arial", Font.BOLD, 24));
+        GridBagConstraints buttonConstraints = new GridBagConstraints();
+        buttonConstraints.gridx = 0;
+        buttonConstraints.gridy = 1;
+        buttonConstraints.insets = new Insets(50, 0, 0, 100); // Espace entre les boutons augmenté
+        buttonConstraints.ipadx = 20; // Largeur horizontale augmentée
+        buttonConstraints.ipady = 10; // Hauteur verticale augmentée
+        add(button1, buttonConstraints);
+        buttonConstraints.gridx = 1;
+        buttonConstraints.insets = new Insets(50, 20, 0, 0);
+        add(button2, buttonConstraints);
+
+    
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Charger et dessiner l'image de fond ici
+        ImageIcon backgroundImage = new ImageIcon("View/Image_Hotel/Hotel1.jpg");
+        g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Ma fenêtre");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(800, 600); // Ajustez les dimensions selon vos besoins
+            frame.setContentPane(new Name());
+            frame.setVisible(true);
         });
     }
 }
