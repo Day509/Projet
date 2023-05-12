@@ -1,6 +1,6 @@
 package Model;
 
-import java.util.*;
+import java.util.Vector;
 
 public class Client {
     private String nom;

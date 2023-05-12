@@ -1,29 +1,21 @@
 package Model;
 
-
 import java.time.LocalDate;
-import java.util.*;
-
-
+import java.util.Vector;
 
 public class Hotel {
 
-    private String nom ;
-    private String adresse ;
+    private String nom;
+    private String adresse;
     private Vector<Chambre> listChambres;
     private Vector<Client> listClient;
 
-
-
-
     public Hotel(String nom, String adresse) {
-        this.nom=nom;
-        this.adresse=adresse;
-        this.listChambres=new Vector<Chambre>();//prq Set et pas vector ??
-        this.listClient=new Vector<Client>();
+        this.nom = nom;
+        this.adresse = adresse;
+        this.listChambres = new Vector<Chambre>();// prq Set et pas vector ??
+        this.listClient = new Vector<Client>();
     }
-
-
 
     public String getNom() {
         return nom;
@@ -33,8 +25,6 @@ public class Hotel {
         this.nom = nom;
     }
 
-
-
     public String getAdresse() {
         return adresse;
     }
@@ -42,7 +32,6 @@ public class Hotel {
     public void setAdresse(String a) {
         this.adresse = a;
     }
-
 
     public Vector<Chambre> getListChambres() {
         return listChambres;
@@ -52,8 +41,6 @@ public class Hotel {
         this.listChambres = listChambres;
     }
 
-
-
     public Vector<Client> getlistClient() {
         return listClient;
     }
@@ -61,43 +48,43 @@ public class Hotel {
     public void setListClient(Vector<Client> listClient) {
         this.listClient = listClient;
     }
-    
 
-
-
-    public Client getClientByName(String nom){         //retourne le client apartir de son nom
+    public Client getClientByName(String nom) { // retourne le client apartir de son nom
         for (int i = 0; i < listClient.size(); i++) {
-            if(listClient.get(i).getNom().equals(nom)) {return listClient.get(i);};   
+            if (listClient.get(i).getNom().equals(nom)) {
+                return listClient.get(i);
+            }
+            ;
         }
         return null;
     }
 
-    public Chambre getRoomByNum(int num, int floor){    // retourne le numero de la chambre
+    public Chambre getRoomByNum(int num, int floor) { // retourne le numero de la chambre
         for (int i = 0; i < listChambres.size(); i++) {
-            if(listChambres.get(i).getIdChambre()==num && listChambres.get(i).getEtage()==floor ) {return listChambres.get(i);};   
+            if (listChambres.get(i).getIdChambre() == num && listChambres.get(i).getEtage() == floor) {
+                return listChambres.get(i);
+            }
+            ;
         }
         return null;
     }
 
-    public Vector<Chambre> getFreeRooms(LocalDate deb, LocalDate fin){
-        return null; //parcour les chambre et renvoi les chambres dispo
+    public Vector<Chambre> getFreeRooms(LocalDate deb, LocalDate fin) {
+        return null; // parcour les chambre et renvoi les chambres dispo
     }
-    
-    
-    
-    public void ajouterChambre(Chambre chambre){
+
+    public void ajouterChambre(Chambre chambre) {
 
     }
 
-    public void ajouterClient(Client client){
+    public void ajouterClient(Client client) {
 
     }
-
 
     public static void main(String[] args) {
-        
-    }
-    // TOUS SE QUE VOUS AVEZ COMME METHODE FACTURE OU UN TRUC DU GENRE DOIT ETRES SUPRIMER CAR C DES CALCULE ...
 
+    }
+    // TOUS SE QUE VOUS AVEZ COMME METHODE FACTURE OU UN TRUC DU GENRE DOIT ETRES
+    // SUPRIMER CAR C DES CALCULE ...
 
 }
