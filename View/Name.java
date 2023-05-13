@@ -7,7 +7,6 @@ public class Name extends JPanel {
 
     public Name() {
         setLayout(new GridBagLayout());
-        
 
         // Titre centré avec de l'espace avant
         JLabel title = new JLabel("HotelHub");
@@ -36,7 +35,6 @@ public class Name extends JPanel {
         buttonConstraints.insets = new Insets(50, 20, 0, 0);
         add(button2, buttonConstraints);
 
-    
     }
 
     @Override

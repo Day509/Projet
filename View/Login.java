@@ -8,7 +8,6 @@ public class Login extends JPanel {
 
     public Login() {
         setLayout(new GridBagLayout());
-        
 
         // Création du titre
         JLabel titleLabel = new JLabel("Se connecter à votre hôtel");

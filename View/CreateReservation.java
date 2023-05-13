@@ -10,9 +10,10 @@ public class CreateReservation extends JPanel {
     private JTextField txtNbChambres;
     private JTextField txtArrivée;
     private JTextField txtDepart;
+
     public CreateReservation() {
         setLayout(new GridBagLayout());
-         // Ajustez les dimensions selon vos besoins
+        // Ajustez les dimensions selon vos besoins
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.insets = new Insets(20, 20, 20, 20); // Espacement augmenté
 

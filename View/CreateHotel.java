@@ -9,7 +9,7 @@ public class CreateHotel extends JPanel {
 
     private final List<JTextField> fieldList = new ArrayList<>();
     private final JPanel panel = new JPanel(new GridBagLayout());
-    private final String[] fieldNames = {"Numéro d'étage:", "Nombre de lits:", "Prix par nuit:"};
+    private final String[] fieldNames = { "Numéro d'étage:", "Nombre de lits:", "Prix par nuit:" };
     private static final Font TITLE_FONT = new Font("Arial", Font.BOLD, 16);
 
     public CreateHotel() {
@@ -39,7 +39,6 @@ public class CreateHotel extends JPanel {
         pan.add(field, cField);
         return pan;
     }
-    
 
     private void create(String title) {
 
@@ -58,7 +57,7 @@ public class CreateHotel extends JPanel {
             JPanel fieldPanel = addField(fieldNames[i]);
             GridBagConstraints cField = new GridBagConstraints();
             cField.gridx = 0;
-            cField.gridy = i+1;
+            cField.gridy = i + 1;
             cField.gridwidth = 1;
             cField.insets.top = 10;
             cField.anchor = GridBagConstraints.WEST;
@@ -76,4 +75,3 @@ public class CreateHotel extends JPanel {
         panel.add(validerBtn, cButton);
     }
 }
-
