@@ -12,15 +12,12 @@ public class View extends JFrame {
         setPreferredSize(new Dimension(w, h));
 
         JLayeredPane window = getLayeredPane();
-        MainPage bg = new MainPage(h, w);
-        bg.setBounds(0, 0, w, h);
-
-        Dashboard dashBase = new Dashboard(h, w);
+        
+        Name dashBase = new Name();
         dashBase.setOpaque(false);
-        dashBase.setBounds(0, 50, w, h);
+        dashBase.setBounds(0, 0, w, h);
 
-        window.add(bg, new Integer(0));
-        window.add(dashBase, new Integer(1));
+        window.add(dashBase);
 
         pack();
         setLocationRelativeTo(null);
