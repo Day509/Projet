@@ -29,7 +29,6 @@ public class Dashboard extends JPanel {
         height = h;
         width = w;
         // Affichage de la section 1 par défaut
-        //mainContent=section1;
         panelContainer = new JPanel();
         panelContainer.setLayout(new CardLayout());
         panelContainer.add(section1);
