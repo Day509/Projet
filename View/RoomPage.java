@@ -1,8 +1,6 @@
 package View;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.time.LocalDate;
@@ -14,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Model.Hotel;
 import test.Generate;
+import test.TableCellColor;
 
 public class RoomPage extends JPanel {
     Generate g = new Generate(new Hotel("Hotel", "Paris"));
@@ -21,6 +20,7 @@ public class RoomPage extends JPanel {
     private int NB_JOURS = 7; // nombre de jours à afficher
     private String[] JOURS_SEMAINE = { "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim" }; // jours de la semaine
     private int TAILLE_CASE = 40; // taille des cases du tableau
+    TableCellColor tcc = new TableCellColor();
     LocalDate date;
     JTable table;
 
@@ -45,7 +45,18 @@ public class RoomPage extends JPanel {
         for (int i = 0; i < NB_CHAMBRES; i++) {
             model.setValueAt("Chambre " + (i + 1), i, 0);
             for (int j = 1; j < NB_JOURS; j++) {
-                model.setValueAt("", i, j);
+                if (g.getAllReservations().get(i).getReservation().getStartdate().equals(date.plusDays(j))){
+                    int k = j;
+                    
+                    while (g.getAllReservations().get(i).getReservation().getEnddate().isAfter(date.plusDays(k))){
+                        if(k == NB_JOURS){
+                            break;
+                        }
+
+                        model.setValueAt("Reservé", i, k);
+                        k++;
+                    }
+                }
             }
         }
 
@@ -53,26 +64,14 @@ public class RoomPage extends JPanel {
         table = new JTable(model);
         table.setRowHeight(TAILLE_CASE);
         table.getTableHeader().setPreferredSize(new Dimension(0, TAILLE_CASE));
+        table.setDefaultEditor(Object.class, null);
         table.setFont(new Font("SansSerif", Font.PLAIN, 12));
-        
-int v=0;
-        for (int i = 0; i < NB_CHAMBRES; i++) {
-            for (int j = 0; j < NB_JOURS; j++) {
-                if (g.getAllReservations().get(i).getReservation().getStartdate().equals(date.plusDays(j))) {
-                    System.out.println("Chambre " + (i+1) + " " + g.getAllReservations().get(i).getReservation().DateDebut+ " | Cellule " + i + " / " + j);
-                    setCellColor(table, i, j+1, Color.RED); // i+1 car la première colonne est vide
-                    v++;
-                }
-            }
-        }
-System.out.println("nombre de reservation : "+v);
+
         table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             public void setValue(Object value) {
                 setText((value == null) ? "" : value.toString());
             }
         });
-        
-        System.out.println('\n');
 
         // ajout du tableau dans un JScrollPane
         JScrollPane scrollPane = new JScrollPane(table);
@@ -84,23 +83,6 @@ System.out.println("nombre de reservation : "+v);
     LocalDate setDate(LocalDate date) {
         this.date = date;
         return date;
-    }
-
+    }    
     
-
-    private void setCellColor(JTable table, int row, int column, Color color) {
-        table.getColumnModel().getColumn(column).setCellRenderer(new DefaultTableCellRenderer() {
-            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int rowIndex, int columnIndex) {
-                Component cellComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, rowIndex, columnIndex);
-                
-                if (rowIndex == row && columnIndex == column) {
-                    cellComponent.setBackground(color);
-                } else {
-                    cellComponent.setBackground(table.getBackground());
-                }
-                return cellComponent;
-            }
-        });
-        table.repaint();
-    }
 }
