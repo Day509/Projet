@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -65,7 +66,9 @@ public class SideBarControl implements ActionListener{
            
         } else if (button == youHotelButton) {
             // Faire quelque chose lorsque le bouton 4 est cliqué
-           
+            section1.setVisible(false);
+            section2.setVisible(false);
+            section3.setVisible(false);
         }
     }
 }
