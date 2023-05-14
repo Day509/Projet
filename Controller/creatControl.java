@@ -26,12 +26,6 @@ public class creatControl implements ActionListener {
 			// ajoute un ActionListener au bouton pour gérer l'événement de clic.
             View View=new View(dim.height, dim.width)	;
             View.setVisible(true);		//Login.setVisible(true);
-			HotelInformation.setVisible(false);
-
-		
+			HotelInformation.setVisible(false);		
 	}
-
-	// public static void main(String[] args) {
-	// new CreateHotel();
-	// }
 }

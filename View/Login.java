@@ -53,14 +53,4 @@ public class Login extends JPanel {
         ImageIcon backgroundImage = new ImageIcon("View/Image_Hotel/Hotel7.jpg");
         g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
     }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("HotelHub");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(800, 600); // Ajustez les dimensions selon vos besoins
-            frame.setContentPane(new Login());
-            frame.setVisible(true);
-        });
-    }
 }

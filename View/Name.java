@@ -26,10 +26,7 @@ public class Name extends JPanel {
         HotelInformation.setVisible(false);
         Login.setVisible(false);
         this.setVisible(true);
-
-
-
-
+         
         // Titre centré avec de l'espace avant
         JLabel title = new JLabel("HotelHub");
         title.setFont(new Font("Arial", Font.BOLD, 36)); // Police de caractères agrandie

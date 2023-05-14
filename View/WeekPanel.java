@@ -87,7 +87,6 @@ public class WeekPanel extends JPanel {
     
     public LocalDate getLastDayOfWeek() {
         return lastDayOfWeek;
-    }
-    
+    }    
 
 }

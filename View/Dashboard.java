@@ -112,5 +112,5 @@ public class Dashboard extends JPanel {
 
         return panel;
     }
-
+    
 }
