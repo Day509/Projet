@@ -6,10 +6,14 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class TableauDeBord extends JPanel {
+import Model.Hotel;
+import test.Generate;
 
+public class TableauDeBord extends JPanel {
+    Generate generate = new Generate(new Hotel("Hotel de la plage", "Biarritz"));
     public TableauDeBord(int width, int height) {
         this.setPreferredSize(new Dimension(width - (width / 3 + 75), height - (height / 3 + 100)));
         this.setBackground(new Color(255, 255, 255, 215));
@@ -44,21 +48,21 @@ public class TableauDeBord extends JPanel {
         JPanel panel = new JPanel(new GridBagLayout());
 
         // Création et ajout des 3 RoomPanel avec espacement
-        JPanel roomPanel1 = roomPanel(Color.green);
+        JPanel roomPanel1 = roomPanel(new Color(0, 255, 0, 127),"Chambre ocupée", "Icon", generate.getAllReservations().size());
         GridBagConstraints gbcRoomPanel1 = new GridBagConstraints();
         gbcRoomPanel1.gridx = 0;
         gbcRoomPanel1.gridy = 0;
         gbcRoomPanel1.insets = new Insets(10, 10, 10, 10);
         panel.add(roomPanel1, gbcRoomPanel1);
 
-        JPanel roomPanel2 = roomPanel(Color.blue);
+        JPanel roomPanel2 = roomPanel(new Color(0, 0, 255, 127),"Chambre libre", "Icon", 1);
         GridBagConstraints gbcRoomPanel2 = new GridBagConstraints();
         gbcRoomPanel2.gridx = 1;
         gbcRoomPanel2.gridy = 0;
         gbcRoomPanel2.insets = new Insets(10, 10, 10, 10);
         panel.add(roomPanel2, gbcRoomPanel2);
 
-        JPanel roomPanel3 = roomPanel(Color.yellow);
+        JPanel roomPanel3 = roomPanel(new Color(255, 255, 0, 127), "Chambre reservée", "Icon", 1);
         GridBagConstraints gbcRoomPanel3 = new GridBagConstraints();
         gbcRoomPanel3.gridx = 2;
         gbcRoomPanel3.gridy = 0;
@@ -75,11 +79,40 @@ public class TableauDeBord extends JPanel {
         return panel;
     }
 
-    private JPanel roomPanel(Color color) {
-        JPanel panel = new JPanel();
+    private JPanel roomPanel(Color color, String textTitle, String icon, int nbr) {
+        JPanel panel = new JPanel(new GridBagLayout());
+        panel.setBorder(new RoundedBorder(10));
+        JLabel label = new JLabel(textTitle);
+        GridBagConstraints gbcLabel = new GridBagConstraints();
+        gbcLabel.gridx = 0;
+        gbcLabel.gridy = 0;
+        gbcLabel.insets = new Insets(0, 0, 65, 0);
+        gbcLabel.anchor = GridBagConstraints.WEST; // Alignement à gauche
+    
+        JLabel label2 = new JLabel(icon);
+        GridBagConstraints gbcLabel2 = new GridBagConstraints();
+        gbcLabel2.gridx = 0;
+        gbcLabel2.gridy = 1;
+        gbcLabel2.insets = new Insets(0, 0, 0, 70);
+        gbcLabel2.anchor = GridBagConstraints.WEST; // Alignement à droite
+
+        JLabel label3 = new JLabel(nbr + "");
+        GridBagConstraints gbcLabel3 = new GridBagConstraints();
+        gbcLabel3.gridx = 1;
+        gbcLabel3.gridy = 1;
+        gbcLabel3.insets = new Insets(0, 0, 0, 0);
+        gbcLabel3.anchor = GridBagConstraints.WEST; // Alignement à gauche
+    
+        panel.add(label, gbcLabel);
+        panel.add(label2, gbcLabel2);
+        panel.add(label3, gbcLabel3);
+    
         panel.setPreferredSize(new Dimension(200, 100));
         panel.setBackground(color);
-
+    
         return panel;
     }
+    
+    
+    
 }
