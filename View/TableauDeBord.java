@@ -77,42 +77,6 @@ public class TableauDeBord extends JPanel {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Ajouter 6 NumBedPanels avec des espaces entre eux
-        for (int i = 0; i < 6; i++) {
-            JPanel numBedPanel = NumBedPanel(i + 1);
-            gbc.gridx = i;
-            gbc.gridy = 0;
-            gbc.insets = new Insets(10, 10, 10, 10);
-            gbc.anchor = GridBagConstraints.WEST;
-            panel.add(numBedPanel, gbc);
-        }
-
-        return panel;
-    }
-
-    private JPanel NumBedPanel(int numBeds) {
-        JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(Color.GRAY);
-
-        // Ajouter une image
-        JLabel bedLabel = new JLabel(new ImageIcon(new ImageIcon("View/Image_Hotel/ChambreSimple1.jpg").getImage()
-                .getScaledInstance(80, 50, Image.SCALE_DEFAULT))); // Remplace "View/Image_Hotel/ChambreSimple1.jpg" par
-                                                                   // le chemin vers ton image
-        GridBagConstraints gbcBedLabel = new GridBagConstraints();
-        gbcBedLabel.gridx = 0;
-        gbcBedLabel.gridy = 0;
-        gbcBedLabel.insets = new Insets(0, 0, 5, 0); // Ajouter une marge en bas pour séparer l'image du texte
-        panel.add(bedLabel, gbcBedLabel);
-
-        // Ajouter le nombre de lits
-        JLabel numBedsLabel = new JLabel(numBeds + " lits");
-        GridBagConstraints gbcNumBedsLabel = new GridBagConstraints();
-        gbcNumBedsLabel.insets = new Insets(0, 0, 20, 0); // Ajouter une marge en bas pour séparer l'image du texte
-        gbcNumBedsLabel.gridx = 0;
-        gbcNumBedsLabel.gridy = 1;
-        gbcNumBedsLabel.anchor = GridBagConstraints.NORTHWEST;
-        panel.add(numBedsLabel, gbcNumBedsLabel);
-
         return panel;
     }
 
