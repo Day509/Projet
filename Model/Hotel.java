@@ -70,7 +70,16 @@ public class Hotel {
     }
 
     public Vector<Chambre> getFreeRooms(LocalDate deb, LocalDate fin) {
-        return null; // parcour les chambre et renvoi les chambres dispo
+        Vector<Chambre> listChambresDispo = new Vector<Chambre>();
+        for (Chambre chambre : listChambres) {
+            for(Reservation reservation : chambre.getReservations()){
+                if(reservation.DateDebut.isAfter(deb) && reservation.DateDeFin.isBefore(fin)){ 
+                    listChambresDispo.add(chambre);
+                }
+            }
+            
+        }
+        return listChambresDispo; // parcour les chambre et renvoi les chambres dispo
     }
 
     public void ajouterChambre(Chambre chambre) {
