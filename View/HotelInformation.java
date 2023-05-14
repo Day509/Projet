@@ -3,7 +3,7 @@ package View;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
-
+import Controller.*;
 public class HotelInformation extends JPanel {
     private JTextField txtNom;
     private JTextField txtAdresse;
@@ -98,6 +98,10 @@ public class HotelInformation extends JPanel {
         constraints.gridwidth = 2;
         constraints.anchor = GridBagConstraints.CENTER;
         add(btnCreer, constraints);
+
+
+        creatControl creatControl=new creatControl(btnCreer,this);
+        btnCreer.addActionListener(creatControl);
     }
 
     // Classe pour la bordure arrondie du panneau
@@ -120,5 +124,15 @@ public class HotelInformation extends JPanel {
             g.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
         }
 
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Ma fenêtre");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(800, 600); // Ajustez les dimensions selon vos besoins
+            frame.setContentPane(new HotelInformation());
+            frame.setVisible(true);
+        });
     }
 }

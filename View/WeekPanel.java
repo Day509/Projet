@@ -16,6 +16,9 @@ public class WeekPanel extends JPanel {
     private LocalDate firstDayOfWeek;
     private LocalDate lastDayOfWeek;
     private JLabel label;
+    //Dashboard dashboard = (Dashboard) SwingUtilities.getWindowAncestor(this);
+    //RoomPage roomPage = (RoomPage) dashboard.getRoomPage();
+
 
     public WeekPanel() {
         this.setPreferredSize(new Dimension(400, 50));
@@ -53,7 +56,7 @@ public class WeekPanel extends JPanel {
         firstDayOfWeek = firstDayOfWeek.plusWeeks(1);
         lastDayOfWeek = lastDayOfWeek.plusWeeks(1);
         label.setText(getWeekRange());
-        // dashboard.getRoomPage().setWeekDates(firstDayOfWeek, lastDayOfWeek);
+        //dashboard.getRoomPage().setWeekDates(firstDayOfWeek, lastDayOfWeek);
     }
 
     // Méthode pour reculer d'une semaine
@@ -61,7 +64,7 @@ public class WeekPanel extends JPanel {
         firstDayOfWeek = firstDayOfWeek.minusWeeks(1);
         lastDayOfWeek = lastDayOfWeek.minusWeeks(1);
         label.setText(getWeekRange());
-        // dashboard.getRoomPage().setWeekDates(firstDayOfWeek, lastDayOfWeek);
+        //dashboard.getRoomPage().setWeekDates(firstDayOfWeek, lastDayOfWeek);
     }
 
     // Méthode pour réinitialiser à la semaine en cours
@@ -81,9 +84,10 @@ public class WeekPanel extends JPanel {
     public LocalDate getFirstDayOfWeek() {
         return firstDayOfWeek;
     }
-
+    
     public LocalDate getLastDayOfWeek() {
         return lastDayOfWeek;
     }
+    
 
 }
