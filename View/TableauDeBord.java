@@ -4,11 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class TableauDeBord extends JPanel {
@@ -74,8 +71,6 @@ public class TableauDeBord extends JPanel {
     private JPanel content() {
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(new Color(255, 255, 255, 215));
-
-        GridBagConstraints gbc = new GridBagConstraints();
 
         return panel;
     }

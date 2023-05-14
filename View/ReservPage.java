@@ -47,6 +47,7 @@ public class ReservPage extends JPanel {
         // création du tableau
         JTable tableau = new JTable(modeleTableau);
         tableau.setPreferredScrollableViewportSize(new Dimension(getWidth(), getWidth()));
+        tableau.setDefaultEditor(Object.class, null);
         tableau.setFillsViewportHeight(true);
         tableau.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
