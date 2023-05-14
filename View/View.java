@@ -8,16 +8,20 @@ import javax.swing.JLayeredPane;
 
 public class View extends JFrame {
 
+    //il sert a afficher la dashboard et les autres page de la sidebord +l'image.....
     public View(int h, int w) {
         setPreferredSize(new Dimension(w, h));
 
         JLayeredPane window = getLayeredPane();
-        
-        Name dashBase = new Name();
-        dashBase.setOpaque(false);
-        dashBase.setBounds(0, 0, w, h);
+        MainPage bg = new MainPage(h, w);
+        bg.setBounds(0, 0, w, h);
 
-        window.add(dashBase);
+        Dashboard dashBase = new Dashboard(h, w);
+        dashBase.setOpaque(false);
+        dashBase.setBounds(0, 50, w, h);
+
+        window.add(bg, new Integer(0));
+        window.add(dashBase, new Integer(1));
 
         pack();
         setLocationRelativeTo(null);

@@ -2,12 +2,13 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
-
+import Controller.*;
 public class Login extends JPanel {
     private JTextField textField;
 
     public Login() {
         setLayout(new GridBagLayout());
+        
 
         // Création du titre
         JLabel titleLabel = new JLabel("Se connecter à votre hôtel");
@@ -40,6 +41,9 @@ public class Login extends JPanel {
         buttonConstraints.ipadx = 20; // Largeur horizontale augmentée
         buttonConstraints.ipady = 10; // Hauteur verticale augmentée
         add(connectButton, buttonConstraints);
+
+        LoginControl LoginControl=new LoginControl(connectButton,this);
+        connectButton.addActionListener(LoginControl);
     }
 
     @Override

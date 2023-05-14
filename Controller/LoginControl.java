@@ -20,7 +20,7 @@ public class LoginControl implements ActionListener {
 	@Override
 
 	public void actionPerformed(ActionEvent e) {
-		JButton button = (JButton) e.getSource();
+		//JButton button = (JButton) e.getSource();
 
 			// ajoute un ActionListener au bouton pour gérer l'événement de clic.
             View View=new View(dim.height, dim.width)	;
@@ -29,8 +29,4 @@ public class LoginControl implements ActionListener {
 
 		
 	}
-
-	// public static void main(String[] args) {
-	// new CreateHotel();
-	// }
 }
