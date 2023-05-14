@@ -1,19 +1,21 @@
 package View;
 
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Toolkit;
-
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JLayeredPane;
 
-public class View extends JFrame {
+public class View extends JPanel {
 
-    //il sert a afficher la dashboard et les autres page de la sidebord +l'image.....
     public View(int h, int w) {
+        setBackground(Color.YELLOW);
+        setLayout(null); // Utilisation d'un positionnement absolu
         setPreferredSize(new Dimension(w, h));
 
-        JLayeredPane window = getLayeredPane();
-        MainPage bg = new MainPage(h, w);
+        JLayeredPane window = new JLayeredPane();
+        window.setBounds(0, 0, w, h);
+
+        Background bg = new Background(h, w);
         bg.setBounds(0, 0, w, h);
 
         Dashboard dashBase = new Dashboard(h, w);
@@ -23,15 +25,6 @@ public class View extends JFrame {
         window.add(bg, new Integer(0));
         window.add(dashBase, new Integer(1));
 
-        pack();
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        View frame = new View(dim.height, dim.width);
-        frame.setVisible(true);
+        add(window);
     }
 }
