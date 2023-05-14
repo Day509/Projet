@@ -23,9 +23,9 @@ public class factureControl implements ActionListener {
 		JButton button = (JButton) e.getSource();
 
 			// ajoute un ActionListener au bouton pour gérer l'événement de clic.
-            facture facture=new facture(dim.height, dim.width)	;
+           /*  JPanel facture=new JPanel(dim.height, dim.width)	;
             facture.setVisible(true);		//Login.setVisible(true);
-			ReservPage.setVisible(false);
+			ReservPage.setVisible(false);*/
 
 		
 	}
