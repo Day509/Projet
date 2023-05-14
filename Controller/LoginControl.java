@@ -9,24 +9,26 @@ import View.*;
 public class LoginControl implements ActionListener {
 
 	JButton button1;
-	Login Login ;
-    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();//recuperer la dimension de l'ecrant
+	Login Login;
+	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();// recuperer la dimension de l'ecrant
+	View view;
 
-	public LoginControl(JButton button1,Login Login) {
+	public LoginControl(JButton button1, Login Login) {
 		this.button1 = button1;
-        this.Login=Login;
+		this.Login = Login;
 	}
 
-	@Override
-
 	public void actionPerformed(ActionEvent e) {
-		//JButton button = (JButton) e.getSource();
 
-			// ajoute un ActionListener au bouton pour gérer l'événement de clic.
-            View View=new View(dim.height, dim.width)	;
-            View.setVisible(true);		//Login.setVisible(true);
+		// ajoute un ActionListener au bouton pour gérer l'événement de clic.
+		if (((JButton) e.getSource()).getText().equals("Se connecter")) {
+			view = new View(dim.height, dim.width);
+			Container parentContainer = Login.getParent();
+			parentContainer.add(view);
+			parentContainer.revalidate();
+			parentContainer.repaint();
+			view.setVisible(true);
 			Login.setVisible(false);
-
-		
+		}
 	}
 }
