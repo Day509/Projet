@@ -12,7 +12,6 @@ import javax.swing.table.DefaultTableModel;
 
 import Model.Hotel;
 import test.Generate;
-import test.TableCellColor;
 
 public class RoomPage extends JPanel {
     Generate g = new Generate(new Hotel("Hotel", "Paris"));
@@ -20,7 +19,6 @@ public class RoomPage extends JPanel {
     private int NB_JOURS = 7; // nombre de jours à afficher
     private String[] JOURS_SEMAINE = { "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim" }; // jours de la semaine
     private int TAILLE_CASE = 40; // taille des cases du tableau
-    TableCellColor tcc = new TableCellColor();
     LocalDate date;
     JTable table;
 
