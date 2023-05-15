@@ -60,7 +60,6 @@ public class creatControl implements ActionListener {
 				return;
 			}
 
-			
 			view = new View(dim.height, dim.width);
 			Container parentContainer = HotelInformation.getParent();
 			parentContainer.add(view);
@@ -68,7 +67,7 @@ public class creatControl implements ActionListener {
 			parentContainer.repaint();
 			view.setVisible(true); // Login.setVisible(true);
 			HotelInformation.setVisible(false);
-			
+
 		}
 
 		// ajoute un ActionListener au bouton pour gérer l'événement de clic.
