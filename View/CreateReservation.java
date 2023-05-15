@@ -9,8 +9,10 @@ public class CreateReservation extends JPanel {
     private JTextField txtNbChambres;
     private JTextField txtArrivée;
     private JTextField txtDepart;
-
+    
     public CreateReservation() {
+        
+
         setLayout(new GridBagLayout());
         // Ajustez les dimensions selon vos besoins
         GridBagConstraints constraints = new GridBagConstraints();
@@ -111,10 +113,18 @@ public class CreateReservation extends JPanel {
         constraints.gridwidth = 2;
         constraints.anchor = GridBagConstraints.CENTER;
         add(btnCreer, constraints);
+
+        btnCreer.addActionListener(e -> {
+
+            closeWindow(); 
+        });
+    }
+    private void closeWindow() {
+        SwingUtilities.getWindowAncestor(this).dispose();
     }
 
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Fenêtre de l'hôtel");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -122,5 +132,5 @@ public class CreateReservation extends JPanel {
             frame.pack();
             frame.setVisible(true);
         });
-    }
+    }* */
 }
