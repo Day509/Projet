@@ -2,6 +2,7 @@ package View;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class CreateRoom extends JPanel {
     private JTextField txtNChambre;
