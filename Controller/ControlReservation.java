@@ -5,14 +5,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import Model.Hotel;
 import View.*;
 
 
 public class ControlReservation{
     private ReservPage reservPage;
+    Hotel hotel;
 
-    public ControlReservation() {
-        reservPage = new ReservPage();
+    public ControlReservation(Hotel hotel) {
+        reservPage = new ReservPage(hotel);
+        this.hotel = hotel;
 
         // Add action listener to the "Ajouter une réservation" button
         reservPage.getAddReservationButton().addActionListener(new ActionListener() {
@@ -25,7 +28,7 @@ public class ControlReservation{
     }
 
     private void openCreateRoomWindow() {
-        CreateReservation createReservation = new CreateReservation();
+        CreateReservation createReservation = new CreateReservation(hotel);
         JFrame frame = new JFrame("Ajouter une réservation");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().add(createReservation);

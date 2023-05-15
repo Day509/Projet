@@ -4,10 +4,13 @@ package Controller;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import Model.Hotel;
 import View.*;
+import test.Generate;
 
 public class LoginControl implements ActionListener {
-
+	Generate generate = new Generate(new Hotel("Hotel", "Peut importe"));
 	JButton button1;
 	Login Login;
 	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();// recuperer la dimension de l'ecrant
@@ -25,7 +28,7 @@ public class LoginControl implements ActionListener {
 		String textEntered = text.getText();
 		// ajoute un ActionListener au bouton pour gérer l'événement de clic.
 		if (((JButton) e.getSource()).getText().equals("Se connecter") && textEntered.equals(textExpected) ) {
-			view = new View(dim.height, dim.width);
+			view = new View(dim.height, dim.width, generate.getHotel());
 			Container parentContainer = Login.getParent();
 			parentContainer.add(view);
 			parentContainer.revalidate();

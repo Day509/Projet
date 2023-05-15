@@ -16,8 +16,9 @@ import test.Generate;
 public class TableauDeBord extends JPanel {
     Generate generate = new Generate(new Hotel("Hotel de la plage", "Biarritz"));
     LocalDate date = LocalDate.now();
+    Hotel hotel;
 
-    public TableauDeBord(int width, int height) {
+    public TableauDeBord(int width, int height, Hotel hotel) {
         this.setPreferredSize(new Dimension(width - (width / 3 + 75), height - (height / 3 + 100)));
         this.setBackground(new Color(255, 255, 255, 215));
 

@@ -3,11 +3,14 @@ package View;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
+
+import Model.Hotel;
+
 import javax.swing.JLayeredPane;
 
 public class View extends JPanel {
 
-    public View(int h, int w) {
+    public View(int h, int w, Hotel hotel) {
         setBackground(Color.YELLOW);
         setLayout(null); // Utilisation d'un positionnement absolu
         setPreferredSize(new Dimension(w, h));
@@ -18,7 +21,7 @@ public class View extends JPanel {
         Background bg = new Background(h, w);
         bg.setBounds(0, 0, w, h);
 
-        Dashboard dashBase = new Dashboard(h, w);
+        Dashboard dashBase = new Dashboard(h, w, hotel);
         dashBase.setOpaque(false);
         dashBase.setBounds(0, 50, w, h);
 

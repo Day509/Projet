@@ -1,17 +1,22 @@
 package View;
 
 import java.awt.*;
+
 import javax.swing.*;
 import javax.swing.border.Border;
+
+import Controller.ControlChambre;
+import Model.Hotel;
 
 public class CreateRoom extends JPanel {
     private JTextField txtNChambre;
     private JTextField txtNetage;
     private JTextField txtPrixParNuit;
     private JTextField txtNbrLits;
+    Hotel hotel;
     
-    public CreateRoom() {
-        
+    public CreateRoom(Hotel hotel) {
+        this.hotel = hotel;
         setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.insets = new Insets(20, 20, 20, 20); // Espacement augmenté
@@ -99,18 +104,12 @@ public class CreateRoom extends JPanel {
         constraints.anchor = GridBagConstraints.CENTER;
         add(btnCreer, constraints);
 
+        ControlChambre control = new ControlChambre(this.hotel, txtNChambre, txtNetage, txtPrixParNuit, txtNbrLits);
 
-        btnCreer.addActionListener(e -> {
-
-            closeWindow();
-        });
+        btnCreer.addActionListener(control);
     }
 
-    // Method to close the CreateRoom window
-    private void closeWindow() {
-        SwingUtilities.getWindowAncestor(this).dispose();
-    }   
-    
+     
 
     // Classe pour la bordure arrondie du panneau
     private static class RoundedBorder implements Border {
@@ -132,14 +131,4 @@ public class CreateRoom extends JPanel {
             g.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
         }
     }
-
-    /*public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Fenêtre de l'hôtel");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.getContentPane().add(new CreateRoom());
-            frame.pack();
-            frame.setVisible(true);
-        });
-    }*/
 } 

@@ -3,6 +3,7 @@ package View;
 import java.awt.*;
 import javax.swing.*;
 import Controller.*;
+import Model.Hotel;
 
 public class Dashboard extends JPanel {
 
@@ -11,9 +12,9 @@ public class Dashboard extends JPanel {
     // JPanel panelContainer;
 
     // Initialisation des sections
-    JPanel section1 = new TableauDeBord(height, width);
-    JPanel section2 = new RoomPage();
-    JPanel section3 = new ReservPage();
+    JPanel section1 ;
+    JPanel section2 ;
+    JPanel section3 ;
     // section4 = new Section4();
 
     JPanel panelContainer;
@@ -23,9 +24,16 @@ public class Dashboard extends JPanel {
     JButton reservButton;
     JButton youHotelButton;
 
-    public Dashboard(int h, int w) {
+    Hotel hotel;
+
+    public Dashboard(int h, int w, Hotel hotel) {
         height = h;
         width = w;
+
+        section1 = new TableauDeBord(height, width, hotel);
+        section2 = new RoomPage(hotel);
+        section3 = new ReservPage(hotel);
+        
         // Affichage de la section 1 par défaut
         panelContainer = new JPanel();
         panelContainer.setLayout(new CardLayout());

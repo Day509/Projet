@@ -4,6 +4,8 @@ package Controller;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import Model.Hotel;
 import View.*;
 
 public class creatControl implements ActionListener {
@@ -13,11 +15,11 @@ public class creatControl implements ActionListener {
 	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();// recuperer la dimension de l'ecrant
 	JTextField[] champs = new JTextField[4];
 	View view;
+	Hotel h;
 
-	public creatControl(JButton button1, HotelInformation HotelInformation, JTextField name, JTextField ad,
+	public creatControl(HotelInformation HotelInformation, JTextField name, JTextField ad,
 			JTextField nbrFloor,
 			JTextField nbrRoom) {
-		this.button1 = button1;
 		this.HotelInformation = HotelInformation;
 		champs[0] = name;
 		champs[1] = ad;
@@ -59,8 +61,8 @@ public class creatControl implements ActionListener {
 						JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-
-			view = new View(dim.height, dim.width);
+			h = new Hotel(textEntered[0], textEntered[1]);
+			view = new View(dim.height, dim.width, h);
 			Container parentContainer = HotelInformation.getParent();
 			parentContainer.add(view);
 			parentContainer.revalidate();
@@ -69,8 +71,5 @@ public class creatControl implements ActionListener {
 			HotelInformation.setVisible(false);
 
 		}
-
-		// ajoute un ActionListener au bouton pour gérer l'événement de clic.
-
 	}
 }

@@ -99,7 +99,7 @@ public class HotelInformation extends JPanel {
         constraints.anchor = GridBagConstraints.CENTER;
         add(btnCreer, constraints);
 
-        creatControl creatControl = new creatControl(btnCreer, this, txtNom, txtAdresse, txtNbEtages, txtNbChambres);
+        creatControl creatControl = new creatControl( this, txtNom, txtAdresse, txtNbEtages, txtNbChambres);
         btnCreer.addActionListener(creatControl);
     }
     // Classe pour la bordure arrondie du panneau

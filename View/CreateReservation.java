@@ -3,6 +3,9 @@ package View;
 import java.awt.*;
 import javax.swing.*;
 
+import Controller.reserveButtonControl;
+import Model.Hotel;
+
 public class CreateReservation extends JPanel {
     private JTextField txtNom;
     private JTextField txtPrenom;
@@ -10,7 +13,7 @@ public class CreateReservation extends JPanel {
     private JTextField txtArrivée;
     private JTextField txtDepart;
     
-    public CreateReservation() {
+    public CreateReservation(Hotel hotel) {
         
 
         setLayout(new GridBagLayout());
@@ -114,23 +117,9 @@ public class CreateReservation extends JPanel {
         constraints.anchor = GridBagConstraints.CENTER;
         add(btnCreer, constraints);
 
-        btnCreer.addActionListener(e -> {
-
-            closeWindow(); 
-        });
-    }
-    private void closeWindow() {
-        SwingUtilities.getWindowAncestor(this).dispose();
+        reserveButtonControl control = new reserveButtonControl(hotel, txtNom, txtPrenom, txtNbChambres, txtArrivée, txtDepart);
+        
+        btnCreer.addActionListener(control);
     }
 
-
-    /*public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Fenêtre de l'hôtel");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.getContentPane().add(new CreateReservation());
-            frame.pack();
-            frame.setVisible(true);
-        });
-    }* */
 }
