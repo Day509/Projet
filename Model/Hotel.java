@@ -73,9 +73,9 @@ public class Hotel {
         Vector<Chambre> listChambresDispo = new Vector<Chambre>();
         for (Chambre chambre : listChambres) {
             for(Reservation reservation : chambre.getReservations()){
-                if(reservation.DateDebut.isAfter(deb) && reservation.DateDeFin.isBefore(fin)){ 
+                if (reservation.DateDebut.isBefore(fin) && reservation.DateDeFin.isAfter(deb)) {
                     listChambresDispo.add(chambre);
-                }
+                }                
             }
             
         }
