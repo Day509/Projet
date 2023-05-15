@@ -3,6 +3,8 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -11,6 +13,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import Model.Hotel;
+import test.ButtonRenderer;
 import test.Generate;
 
 public class ReservPage extends JPanel {
@@ -38,7 +41,7 @@ public class ReservPage extends JPanel {
             donneesTableau[i][4] = g.getAllReservations().get(i).getReservation().getStartdate();
             donneesTableau[i][5] = g.getAllReservations().get(i).getReservation().getEnddate();
             donneesTableau[i][6] = "En cours";
-            donneesTableau[i][7] = "Facture";
+            donneesTableau[i][7] = new JButton("Facture");
         }
 
         // création du modèle de tableau
@@ -59,6 +62,9 @@ public class ReservPage extends JPanel {
         for (int i = 0; i < NB_COLONNES; i++) {
             tableau.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+
+        ButtonRenderer buttonRenderer = new ButtonRenderer();
+        tableau.getColumnModel().getColumn(7).setCellRenderer(buttonRenderer);
 
         // ajout du tableau dans un panneau avec barre de défilement
         JScrollPane scrollPane = new JScrollPane(tableau);
