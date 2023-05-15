@@ -42,8 +42,9 @@ public class Login extends JPanel {
         buttonConstraints.ipady = 10; // Hauteur verticale augmentée
         add(connectButton, buttonConstraints);
 
-        LoginControl LoginControl=new LoginControl(connectButton,this);
+        LoginControl LoginControl=new LoginControl(connectButton,this, textField);
         connectButton.addActionListener(LoginControl);
+        
     }
 
     @Override
