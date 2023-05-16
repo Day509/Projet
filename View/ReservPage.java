@@ -31,6 +31,7 @@ public class ReservPage extends JPanel {
     DefaultTableModel modeleTableau;
     JTable tableau;
     Hotel hotel;
+    ButtonRenderer buttonRenderer = new ButtonRenderer();
 
     public ReservPage(Hotel hotel) {
         createReservation = new CreateReservation(g.getHotel());
@@ -85,9 +86,6 @@ public class ReservPage extends JPanel {
             tableau.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-        ButtonRenderer buttonRenderer = new ButtonRenderer();
-        tableau.getColumnModel().getColumn(7).setCellRenderer(buttonRenderer);
-
         // ajout du tableau dans un panneau avec barre de défilement
         JScrollPane scrollPane = new JScrollPane(tableau);
         add(scrollPane, BorderLayout.CENTER);
@@ -124,5 +122,8 @@ public class ReservPage extends JPanel {
         modeleTableau.setDataVector(donneesTableau, titresColonnes);
         modeleTableau.fireTableDataChanged();
         NB_LIGNES++;
+        tableau.getColumnModel().getColumn(7).setCellRenderer(buttonRenderer);
+
     }
+    
 }

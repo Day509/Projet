@@ -7,10 +7,13 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.time.LocalDate;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Model.Chambre;
 import Model.Hotel;
+import Model.Reservation;
 import test.Generate;
 
 public class TableauDeBord extends JPanel {
@@ -21,6 +24,7 @@ public class TableauDeBord extends JPanel {
     public TableauDeBord(int width, int height, Hotel hotel) {
         this.setPreferredSize(new Dimension(width - (width / 3 + 75), height - (height / 3 + 100)));
         this.setBackground(new Color(255, 255, 255, 215));
+        this.hotel = hotel;
 
         JPanel topPanel = topPanel();
         topPanel.setBackground(new Color(255, 255, 255, 0));
@@ -49,45 +53,46 @@ public class TableauDeBord extends JPanel {
     }
 
     private JPanel topPanel() {
-
         int nbr = 0, toDay = 0;
-        for (int i = 0; i < generate.getHotel().getListChambres().size(); i++) {
-            for (int j = 1; j < 7; j++) {
-                if (generate.getAllReservations().get(i).getReservation().getStartdate().equals(date.plusDays(j))) {
-                    int k = j;
 
-                    while (generate.getAllReservations().get(i).getReservation().getEnddate()
-                            .isAfter(date.plusDays(k))) {
-                        if (k == 7) {
-                            break;
-                        }
-                        k++;
+        for (Chambre chambre : hotel.getListChambres()) { // pour chaque chambre
+            for (Reservation resa : chambre.getReservations()) {
+                int k = 1;
+
+                while (resa.getEnddate().isAfter(date.plusDays(k))) {
+                    if (k == 7) {
+                        break;
                     }
-                    nbr++;
-                } else if (generate.getAllReservations().get(i).getReservation().getStartdate().isEqual(date)){
+                    k++;
+                }
+                nbr++;
+                if (resa.getStartdate().equals(date)) {
                     toDay++;
                 }
             }
         }
+
         JPanel panel = new JPanel(new GridBagLayout());
+        ImageIcon icon = new ImageIcon("src/View/Icon/lit.png");
+
 
         // Création et ajout des 3 RoomPanel avec espacement
-        JPanel roomPanel1 = roomPanel(new Color(0, 255, 0, 127), "Chambre ocupée", "Icon", toDay);
+        JPanel roomPanel1 = roomPanel(new Color(0, 255, 0, 127), "Chambre ocupée", icon, toDay);
         GridBagConstraints gbcRoomPanel1 = new GridBagConstraints();
         gbcRoomPanel1.gridx = 0;
         gbcRoomPanel1.gridy = 0;
         gbcRoomPanel1.insets = new Insets(10, 10, 10, 10);
         panel.add(roomPanel1, gbcRoomPanel1);
 
-        JPanel roomPanel2 = roomPanel(new Color(0, 0, 255, 127), "Chambre libre", "Icon",
-                generate.getHotel().getFreeRooms(date, date.plusDays(7)).size()-toDay);
+        JPanel roomPanel2 = roomPanel(new Color(0, 0, 255, 127), "Chambre libre", icon,
+                generate.getHotel().getFreeRooms(date, date.plusDays(7)).size() - toDay);
         GridBagConstraints gbcRoomPanel2 = new GridBagConstraints();
         gbcRoomPanel2.gridx = 1;
         gbcRoomPanel2.gridy = 0;
         gbcRoomPanel2.insets = new Insets(10, 10, 10, 10);
         panel.add(roomPanel2, gbcRoomPanel2);
 
-        JPanel roomPanel3 = roomPanel(new Color(255, 255, 0, 127), "Chambre reservée", "Icon", nbr);
+        JPanel roomPanel3 = roomPanel(new Color(255, 255, 0, 127), "Chambre reservée", icon, nbr);
         GridBagConstraints gbcRoomPanel3 = new GridBagConstraints();
         gbcRoomPanel3.gridx = 2;
         gbcRoomPanel3.gridy = 0;
@@ -104,7 +109,7 @@ public class TableauDeBord extends JPanel {
         return panel;
     }
 
-    private JPanel roomPanel(Color color, String textTitle, String icon, int nbr) {
+    private JPanel roomPanel(Color color, String textTitle, ImageIcon icon, int nbr) {
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBorder(new RoundedBorder(10));
         JLabel label = new JLabel(textTitle);
