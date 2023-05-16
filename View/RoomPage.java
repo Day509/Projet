@@ -16,10 +16,9 @@ import javax.swing.table.DefaultTableModel;
 
 import Controller.ControlChambre;
 import Model.Hotel;
-import test.Generate;
+import Model.Reservation;
 
 public class RoomPage extends JPanel {
-    Generate g = new Generate(new Hotel("Hotel", "Paris"));
     private int NB_CHAMBRES = 0; // nombre de chambres
     private int NB_JOURS = 7; // nombre de jours à afficher
     private String[] JOURS_SEMAINE = { "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim" }; // jours de la semaine
@@ -29,10 +28,12 @@ public class RoomPage extends JPanel {
     CreateRoom createRoom;
     DefaultTableModel model;
     String[] entetes = new String[NB_JOURS + 1];
+    Hotel hotel;
 
-    public RoomPage(Hotel hotel) {
+    public RoomPage(Hotel h) {
+        hotel = h;
         setLayout(new BorderLayout());
-        createRoom = new CreateRoom(g.getHotel());
+        NB_CHAMBRES = hotel.getListChambres().size();
         // création du panneau pour le taableau
         date = LocalDate.now();
         entetes[0] = "";
@@ -59,7 +60,7 @@ public class RoomPage extends JPanel {
         // ajout du bouton Ajouter une réservation
         JButton addButton = new JButton("Ajouter une chambre");
         buttonPanel.add(addButton, gbc);
-        ControlChambre control = new ControlChambre(g.getHotel());
+        ControlChambre control = new ControlChambre(hotel, this);
         addButton.addActionListener(control);
         // ajout du panneau du bouton au panneau principal
         add(buttonPanel, BorderLayout.SOUTH);
@@ -97,29 +98,21 @@ public class RoomPage extends JPanel {
 
     
 
-    private void updateTableData() {
+    public void updateTableData() {
         // Récupérer les nouvelles données de la réservation
         model.setRowCount(NB_CHAMBRES); // Mettre à jour le nombre de lignes du modèle
 
         // ajout des cellules pour chaque chambre
         for (int i = 0; i < NB_CHAMBRES; i++) {
-            model.setValueAt("Chambre " + (i + 1), i, 0);
-            for (int j = 1; j < NB_JOURS; j++) {
-                if (g.getAllReservations().get(i).getReservation().getStartdate().equals(date.plusDays(j))) {
-                    int k = j;
-
-                    while (g.getAllReservations().get(i).getReservation().getEnddate().isAfter(date.plusDays(k))) {
-                        if (k == NB_JOURS) {
-                            break;
-                        }
-
-                        model.setValueAt("Reservé", i, k);
-                        k++;
+            for (Reservation r : hotel.getListChambres().get(i).getReservations()) {
+                for (int j = 0; j < NB_JOURS; j++) {
+                    if (r.getStartdate().isBefore(date.plusDays(j)) && r.getEnddate().isAfter(date.plusDays(j))) {
+                        model.setValueAt("Reservé", i, j + 1);
                     }
                 }
             }
         }
-
+        
         model.fireTableDataChanged();
     }
 
