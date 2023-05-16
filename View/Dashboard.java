@@ -15,6 +15,8 @@ public class Dashboard extends JPanel {
     JPanel section1 ;
     JPanel section2 ;
     JPanel section3 ;
+    JPanel section4 ; 
+
     // section4 = new Section4();
 
     JPanel panelContainer;
@@ -33,6 +35,7 @@ public class Dashboard extends JPanel {
         section1 = new TableauDeBord(height, width, hotel);
         section2 = new RoomPage(hotel);
         section3 = new ReservPage(hotel);
+        section4 = new yourHotel(hotel);
         
         // Affichage de la section 1 par défaut
         panelContainer = new JPanel();
@@ -40,6 +43,7 @@ public class Dashboard extends JPanel {
         panelContainer.add(section1);
         panelContainer.add(section2);
         panelContainer.add(section3);
+        panelContainer.add(section4);
         // j'affiche le tableau de brod par defaut
         section1.setVisible(true);
 
@@ -58,7 +62,7 @@ public class Dashboard extends JPanel {
         JPanel sideBar = sidebar();
         // gestion des boutttons de la sidebare
         SideBarControl SideBarControl = new SideBarControl(dashButton, roomButton, reservButton, youHotelButton,
-                section1, section2, section3);
+                section1, section2, section3, section4);
         dashButton.addActionListener(SideBarControl);
         roomButton.addActionListener(SideBarControl);
         reservButton.addActionListener(SideBarControl);
