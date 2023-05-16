@@ -3,7 +3,6 @@ package View;
 import java.awt.*;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 
 import Controller.ControlChambre;
 import Model.Hotel;
@@ -14,9 +13,11 @@ public class CreateRoom extends JPanel {
     private JTextField txtPrixParNuit;
     private JTextField txtNbrLits;
     Hotel hotel;
+    RoomPage room;
     
-    public CreateRoom(Hotel hotel) {
+    public CreateRoom(Hotel hotel, RoomPage roomPage) {
         this.hotel = hotel;
+        this.room = roomPage;
         setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.insets = new Insets(20, 20, 20, 20); // Espacement augmenté
@@ -107,28 +108,5 @@ public class CreateRoom extends JPanel {
         ControlChambre control = new ControlChambre(this.hotel, txtNChambre, txtNetage, txtPrixParNuit, txtNbrLits);
 
         btnCreer.addActionListener(control);
-    }
-
-     
-
-    // Classe pour la bordure arrondie du panneau
-    private static class RoundedBorder implements Border {
-        private int radius;
-
-        RoundedBorder(int radius) {
-            this.radius = radius;
-        }
-
-        public Insets getBorderInsets(Component c) {
-            return new Insets(this.radius + 1, this.radius + 1, this.radius + 2, this.radius);
-        }
-
-        public boolean isBorderOpaque() {
-            return true;
-        }
-
-        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-            g.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
-        }
-    }
+    }    
 } 
