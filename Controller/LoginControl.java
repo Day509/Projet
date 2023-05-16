@@ -1,4 +1,3 @@
-
 package Controller;
 
 import java.awt.*;
@@ -10,34 +9,45 @@ import View.*;
 import test.Generate;
 
 public class LoginControl implements ActionListener {
-	Generate generate = new Generate(new Hotel("Hotel", "Peut importe"));
-	JButton button1;
-	Login Login;
-	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();// recuperer la dimension de l'ecrant
-	View view;
-	String textExpected = "admin";
-	JTextField text;
+    Generate generate = new Generate(new Hotel("Hotel", "Peut importe"));
+    JButton button1;
+    Login login;
+    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+    View view;
+    String[] textExpected = {"admin", "invite"};
+    JTextField text;
 
-	public LoginControl(JButton button1, Login Login, JTextField textField) {
-		this.button1 = button1;
-		this.Login = Login;
-		text = textField;
-	}
+    public LoginControl(JButton button1, Login login, JTextField textField) {
+        this.button1 = button1;
+        this.login = login;
+        text = textField;
+    }
 
-	public void actionPerformed(ActionEvent e) {
-		String textEntered = text.getText();
-		// ajoute un ActionListener au bouton pour gérer l'événement de clic.
-		if (((JButton) e.getSource()).getText().equals("Se connecter") && textEntered.equals(textExpected) ) {
-			view = new View(dim.height, dim.width, generate.getHotel());
-			Container parentContainer = Login.getParent();
-			parentContainer.add(view);
-			parentContainer.revalidate();
-			parentContainer.repaint();
-			view.setVisible(true);
-			Login.setVisible(false);
-		}
-		else {
-			JOptionPane.showMessageDialog(null, "Hôtel introuvable", "Erreur", JOptionPane.ERROR_MESSAGE);
-		}
-	}
+    public void actionPerformed(ActionEvent e) {
+        String textEntered = text.getText();
+        if (((JButton) e.getSource()).getText().equals("Se connecter") && containsTextExpected(textEntered)) {
+            view = new View(dim.height, dim.width, isAdmin() ? generate.getHotel() : new Hotel("Suu", "Evry"));
+            Container parentContainer = login.getParent();
+            parentContainer.add(view);
+            parentContainer.revalidate();
+            parentContainer.repaint();
+            view.setVisible(true);
+            login.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Hôtel introuvable", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private boolean isAdmin() {
+        return text.getText().equals("admin");
+    }
+
+    private boolean containsTextExpected(String text) {
+        for (String expected : textExpected) {
+            if (text.equals(expected)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
