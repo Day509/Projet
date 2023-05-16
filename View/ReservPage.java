@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -33,7 +32,9 @@ public class ReservPage extends JPanel {
     Hotel hotel;
     ButtonRenderer buttonRenderer = new ButtonRenderer();
 
-    public ReservPage(Hotel hotel) {
+    public ReservPage(Hotel h) {
+        hotel = h;
+        NB_LIGNES = hotel.getListChambres().size();
         createReservation = new CreateReservation(g.getHotel());
         setLayout(new BorderLayout());
 
@@ -43,10 +44,33 @@ public class ReservPage extends JPanel {
 
         // création des données du tableau
 
-       createTable();
-       if(hotel.getNom().equals("Hotel")) {
-           updateTableData();
-       }
+        createTable();
+        if (hotel.getNom().equals("Hotel")) {
+            donneesTableau = new Object[NB_LIGNES][NB_COLONNES];
+
+            for (int i = 0; i < NB_LIGNES; i++) {
+
+                donneesTableau[i][0] = g.getAllReservations().get(i).getReservation().id;
+                donneesTableau[i][1] = i; // g.getAllReservations().get(i).getReservations().get(i).getChambre().getIdChambre();
+                donneesTableau[i][2] = g.getAllReservations().get(i).getReservation().getClient()
+                        .getNom();
+                donneesTableau[i][3] = g.getAllReservations().get(i).getReservation().getClient()
+                        .getPrenom();
+                donneesTableau[i][4] = g.getAllReservations().get(i).getReservation().getStartdate();
+                donneesTableau[i][5] = g.getAllReservations().get(i).getReservation().getEnddate();
+                donneesTableau[i][6] = "En cours";
+                donneesTableau[i][7] = new JButton("Facture");
+
+                // Mettre à jour le modèle de tableau avec les nouvelles données
+                
+                tableau.getColumnModel().getColumn(7).setCellRenderer(buttonRenderer);
+
+            }
+            DefaultTableModel modeleTableau = (DefaultTableModel) tableau.getModel();
+                modeleTableau.setDataVector(donneesTableau, titresColonnes);
+                modeleTableau.fireTableDataChanged();
+
+        }
 
         // création du panneau pour le bouton
         JPanel buttonPanel = new JPanel(new GridBagLayout());
@@ -67,10 +91,10 @@ public class ReservPage extends JPanel {
 
     }
 
-    private void createTable(){
+    private void createTable() {
         modeleTableau = new DefaultTableModel(donneesTableau, titresColonnes);
         // création des données du tableau
-        
+
         tableau = new JTable(modeleTableau);
         tableau.setPreferredScrollableViewportSize(new Dimension(getWidth(), getWidth()));
         tableau.setDefaultEditor(Object.class, null);
@@ -99,23 +123,19 @@ public class ReservPage extends JPanel {
         dialog.setVisible(true);
     }
 
-    public AbstractButton getAddReservationButton() {
-        return null;
-    }
-
     public void updateTableData() {
-        
-        donneesTableau = new Object[NB_LIGNES+1][NB_COLONNES];
+
+        donneesTableau = new Object[NB_LIGNES + 1][NB_COLONNES];
 
         // Récupérer les nouvelles données de la réservation
-            donneesTableau[NB_LIGNES][0] = g.getAllReservations().get(NB_LIGNES).getReservation().id;
-            donneesTableau[NB_LIGNES][1] = NB_LIGNES; // g.getAllReservations().get(i).getReservations().get(i).getChambre().getIdChambre();
-            donneesTableau[NB_LIGNES][2] = g.getAllReservations().get(NB_LIGNES).getReservation().getClient().getNom();
-            donneesTableau[NB_LIGNES][3] = g.getAllReservations().get(NB_LIGNES).getReservation().getClient().getPrenom();
-            donneesTableau[NB_LIGNES][4] = g.getAllReservations().get(NB_LIGNES).getReservation().getStartdate();
-            donneesTableau[NB_LIGNES][5] = g.getAllReservations().get(NB_LIGNES).getReservation().getEnddate();
-            donneesTableau[NB_LIGNES][6] = "En cours";
-            donneesTableau[NB_LIGNES][7] = new JButton("Facture");
+        donneesTableau[NB_LIGNES][0] = g.getAllReservations().get(NB_LIGNES).getReservation().id;
+        donneesTableau[NB_LIGNES][1] = NB_LIGNES; // g.getAllReservations().get(i).getReservations().get(i).getChambre().getIdChambre();
+        donneesTableau[NB_LIGNES][2] = g.getAllReservations().get(NB_LIGNES).getReservation().getClient().getNom();
+        donneesTableau[NB_LIGNES][3] = g.getAllReservations().get(NB_LIGNES).getReservation().getClient().getPrenom();
+        donneesTableau[NB_LIGNES][4] = g.getAllReservations().get(NB_LIGNES).getReservation().getStartdate();
+        donneesTableau[NB_LIGNES][5] = g.getAllReservations().get(NB_LIGNES).getReservation().getEnddate();
+        donneesTableau[NB_LIGNES][6] = "En cours";
+        donneesTableau[NB_LIGNES][7] = new JButton("Facture");
 
         // Mettre à jour le modèle de tableau avec les nouvelles données
         DefaultTableModel modeleTableau = (DefaultTableModel) tableau.getModel();
@@ -125,5 +145,5 @@ public class ReservPage extends JPanel {
         tableau.getColumnModel().getColumn(7).setCellRenderer(buttonRenderer);
 
     }
-    
+
 }
