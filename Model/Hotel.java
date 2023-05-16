@@ -56,8 +56,6 @@ public class Hotel {
             if (listClient.get(i).getNom().equals(nom) && listClient.get(i).getPrenom().equals(prenom)) {
                 return listClient.get(i);
             }
-            ;
-            return listClient.get(i);
         }
         return null;
     }

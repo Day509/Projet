@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -31,6 +32,8 @@ public class ReservPage extends JPanel {
     JTable tableau;
     Hotel hotel;
     ButtonRenderer buttonRenderer = new ButtonRenderer();
+    
+    CreateFacture createFacture;
 
     public ReservPage(Hotel h) {
         hotel = h;
@@ -85,10 +88,33 @@ public class ReservPage extends JPanel {
         addButton.addActionListener(e -> {
             createReservWindow();
         });
+        // ajout du bouton facture
+        JButton facture = new JButton("Facture");
+        gbc.gridx = 1; // Déplacer le bouton à la colonne suivante
+         buttonPanel.add(facture, gbc);
+        facture.addActionListener(a -> {
+        createFactureWindow();
+    });
 
         // ajout du panneau du bouton au panneau principal
         add(buttonPanel, BorderLayout.SOUTH);
 
+    }
+
+    private void createFactureWindow() {
+        createFacture = new CreateFacture(g.getHotel());
+        JDialog dialog = new JDialog();
+        dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dialog.setContentPane(createFacture);
+        dialog.pack();
+        dialog.setVisible(true);
+    }
+
+    public AbstractButton getAddReservationButton() {
+        return null;
+    }
+    public AbstractButton getAddFacturenButton() {
+        return null;
     }
 
     private void createTable() {

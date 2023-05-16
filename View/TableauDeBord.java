@@ -92,7 +92,7 @@ public class TableauDeBord extends JPanel {
         panel.add(roomPanel1, gbcRoomPanel1);
 
         JPanel roomPanel2 = roomPanel(new Color(0, 0, 255, 127), "Chambre libre", icon,
-                generate.getHotel().getFreeRooms(date, date.plusDays(7)).size() - toDay);
+                nbr - hotel.getListChambres().size());
         GridBagConstraints gbcRoomPanel2 = new GridBagConstraints();
         gbcRoomPanel2.gridx = 1;
         gbcRoomPanel2.gridy = 0;

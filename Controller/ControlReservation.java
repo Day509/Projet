@@ -1,49 +1,33 @@
 package Controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
+
+import javax.swing.JDialog;
 
 import Model.Hotel;
 import View.*;
 
 
 public class ControlReservation{
-    private ReservPage reservPage;
+    ReservPage reservPage;
     Hotel hotel;
 
-    public ControlReservation(Hotel hotel) {
+    public ControlReservation(Hotel hotel, ReservPage reserv) {
         reservPage = new ReservPage(hotel);
         this.hotel = hotel;
-
-        // Add action listener to the "Ajouter une réservation" button
-        reservPage.getAddReservationButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Open the CreateRoom window
-                openCreateRoomWindow();
-            }
-        });
     }
 
-    private void openCreateRoomWindow() {
+
+
+
+    public void openCreateRoomWindow() {
         CreateReservation createReservation = new CreateReservation(hotel);
-        JFrame frame = new JFrame("Ajouter une réservation");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.getContentPane().add(createReservation);
-        frame.pack();
-        frame.setVisible(true);
+        JDialog dialog = new JDialog();
+        dialog.add(createReservation);
+        dialog.pack();
+        dialog.setVisible(true);
+        
     }
 
-    /*public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            ControlChambre controlReservation = new ControlChambre();
-            JFrame frame = new JFrame("Fenêtre de l'hôtel");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.getContentPane().add(controlReservation.reservPage);
-            frame.pack();
-            frame.setVisible(true);
-        });
-    }*/
+
 }

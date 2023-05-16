@@ -42,7 +42,7 @@ public class facture extends JPanel {
         panelConstraints.insets = new Insets(20, 20, 20, 20); // Espacement augmenté
 
         // Label et zone de texte "Nom"
-        JLabel lblNum = new JLabel("Num de Reservation:");
+        JLabel lblNum = new JLabel(Reservation.Client.getNom());
         panelConstraints.gridx = 0;
         panelConstraints.gridy = 0;
         panelConstraints.anchor = GridBagConstraints.EAST;
