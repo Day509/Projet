@@ -24,10 +24,11 @@ public class SideBarControl implements ActionListener{
     JPanel section1;
     JPanel section2;
     JPanel section3;
+    JPanel section4;
     //JPanel mainContent;
 
     public SideBarControl(JButton dashButton,JButton roomButton,JButton reservButton,JButton youHotelButton
-    ,JPanel section1,JPanel section2,JPanel section3) {
+    ,JPanel section1,JPanel section2,JPanel section3, JPanel section4) {
         this.dashButton = dashButton;
         this.roomButton = roomButton;
         this.reservButton = reservButton;
@@ -35,6 +36,7 @@ public class SideBarControl implements ActionListener{
         this.section1 = section1;
         this.section2 = section2;
         this.section3 = section3;
+        this.section4 = section4;
      }
 
     @Override
@@ -44,6 +46,7 @@ public class SideBarControl implements ActionListener{
             // Faire quelque chose lorsque le bouton 1 est cliqué
             section2.setVisible(false);
             section3.setVisible(false);
+            section4.setVisible(false);
             section1.setVisible(true);
             //mainContent=section1;
             
@@ -52,6 +55,7 @@ public class SideBarControl implements ActionListener{
             // Faire quelque chose lorsque le bouton 2 est cliqué
             section1.setVisible(false);
             section3.setVisible(false);
+            section4.setVisible(false);
             section2.setVisible(true);
             
             //section3.setVisible(false);
@@ -61,6 +65,7 @@ public class SideBarControl implements ActionListener{
             // Faire quelque chose lorsque le bouton 3 est cliqué
             section1.setVisible(false);
             section2.setVisible(false);
+            section4.setVisible(false);
             section3.setVisible(true);
            
         } else if (button == youHotelButton) {
@@ -68,6 +73,7 @@ public class SideBarControl implements ActionListener{
             section1.setVisible(false);
             section2.setVisible(false);
             section3.setVisible(false);
+            section4.setVisible(true);
         }
     }
 }
