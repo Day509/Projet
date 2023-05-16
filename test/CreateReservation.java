@@ -33,7 +33,7 @@ public class CreateReservation {
 
     private LocalDate[] genererDatesAleatoires(int anneeMin, int anneeMax, int dureeSejourMin, int dureeSejourMax) {
         int anneeDebut = rand.nextInt(anneeMax - anneeMin + 1) + anneeMin;
-        int moisDebut = 5;
+        int moisDebut = LocalDate.now().getMonthValue();
         int jourDebut = rand.nextInt(28) + 1;
     
         LocalDate dateDebut = LocalDate.of(anneeDebut, moisDebut, jourDebut);
