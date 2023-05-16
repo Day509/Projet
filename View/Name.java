@@ -9,16 +9,15 @@ import Controller.*;
 public class Name extends JPanel {
 
     JPanel HotelInformation = new HotelInformation();
-    JPanel Login= new Login();
+    JPanel Login = new Login();
     JButton button1;
     JButton button2;
     public JPanel panelContainer;
+
     public Name() {
         setLayout(new GridBagLayout());
 
-
-       
-        panelContainer=new JPanel();
+        panelContainer = new JPanel();
         panelContainer.setLayout(new CardLayout());
         panelContainer.add(this);
         panelContainer.add(HotelInformation);
@@ -26,7 +25,7 @@ public class Name extends JPanel {
         HotelInformation.setVisible(false);
         Login.setVisible(false);
         this.setVisible(true);
-         
+
         // Titre centré avec de l'espace avant
         JLabel title = new JLabel("HotelHub");
         title.setFont(new Font("Arial", Font.BOLD, 36)); // Police de caractères agrandie
@@ -54,8 +53,7 @@ public class Name extends JPanel {
         buttonConstraints.insets = new Insets(50, 20, 0, 0);
         add(button2, buttonConstraints);
 
-       
-        NameControl NameControl = new NameControl(button1, button2 , HotelInformation, Login,this);
+        NameControl NameControl = new NameControl(button1, button2, HotelInformation, Login, this);
         button1.addActionListener(NameControl);
         button2.addActionListener(NameControl);
 
@@ -73,8 +71,9 @@ public class Name extends JPanel {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Ma fenêtre");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(800, 600); // Ajustez les dimensions selon vos besoins
-            Name Name=new Name();
+            frame.setSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width,
+                    Toolkit.getDefaultToolkit().getScreenSize().height)); // Ajustez les dimensions selon vos besoins
+            Name Name = new Name();
             frame.setContentPane(Name.panelContainer);
             frame.setVisible(true);
         });

@@ -18,11 +18,11 @@ public class ControlChambre implements ActionListener {
     CreateRoom c;
     JTextField[] txt = new JTextField[4];
     static int id = 0;
-    int[] toInt = new int[4];
+    int[] toInt = new int[3];
+    Double ppn;
 
     public ControlChambre(Hotel hotel) {
         this.hotel = hotel;
-
     }
 
     public ControlChambre(Hotel hotel, JTextField numChambre, JTextField numEtage, JTextField prixParNuit,
@@ -32,7 +32,6 @@ public class ControlChambre implements ActionListener {
         txt[1] = numEtage;
         txt[2] = prixParNuit;
         txt[3] = nbrLits;
-
     }
 
     @Override
@@ -44,23 +43,35 @@ public class ControlChambre implements ActionListener {
             dialog.pack();
             dialog.setVisible(true);
         }
-        try {
-            for (int i = 0; i < txt.length; i++) {
-                toInt[i] = Integer.parseInt(txt[i].getText());
-            }
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Veuillez entrer des nombres entiers", "Erreur",
-                    JOptionPane.ERROR_MESSAGE);
-        }
+        
 
-        if (e.getSource() instanceof JButton && ((JButton) e.getSource()).getText().equals("Valider")) {
+        if (e.getSource() instanceof JButton && ((JButton) e.getSource()).getText().equals("Ajouter")) {
             if (txt[0].getText().equals("") || txt[1].getText().equals("") || txt[2].getText().equals("")
-                    || txt[3].getText().equals("")) {
+                    || txt[2].getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs", "Erreur",
                         JOptionPane.ERROR_MESSAGE);
-            } else {
-                hotel.ajouterChambre(new Chambre(toInt[0], toInt[1], toInt[2], toInt[3], hotel));
             }
+
+            else {
+                try {
+                    toInt[0] = Integer.parseInt(txt[0].getText());
+                    toInt[1] = Integer.parseInt(txt[1].getText());
+                    ppn = Double.parseDouble(txt[2].getText());
+                    toInt[2] = Integer.parseInt(txt[3].getText());
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(null, "Veuillez entrer des nombres", "Erreur",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+
+                if (toInt[0] < 0 || toInt[1] < 0 || ppn < 0 || toInt[2] < 0) {
+                    JOptionPane.showMessageDialog(null, "Veuillez entrer des nombres positifs", "Erreur",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+                 else {
+                    hotel.ajouterChambre(new Chambre(toInt[0], toInt[1], ppn, toInt[2], hotel));
+                    JOptionPane.showMessageDialog(null, "Chambre ajoutée", "Confirmation", JOptionPane.PLAIN_MESSAGE);
+                }
+            }                    
         }
     }
 }

@@ -11,7 +11,6 @@ import javax.swing.JLayeredPane;
 public class View extends JPanel {
 
     public View(int h, int w, Hotel hotel) {
-        setBackground(Color.YELLOW);
         setLayout(null); // Utilisation d'un positionnement absolu
         setPreferredSize(new Dimension(w, h));
 
