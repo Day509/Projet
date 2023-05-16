@@ -20,6 +20,7 @@ public class TableauDeBord extends JPanel {
     Generate generate = new Generate(new Hotel("Hotel de la plage", "Biarritz"));
     LocalDate date = LocalDate.now();
     Hotel hotel;
+    ImageIcon icon;
 
     public TableauDeBord(int width, int height, Hotel hotel) {
         this.setPreferredSize(new Dimension(width - (width / 3 + 75), height - (height / 3 + 100)));
@@ -73,8 +74,14 @@ public class TableauDeBord extends JPanel {
         }
 
         JPanel panel = new JPanel(new GridBagLayout());
-        ImageIcon icon = new ImageIcon("src/View/Icon/lit.png");
+        try {
+            icon = new ImageIcon("View/Image_Hotel/lit.png");
+            // Utilisez l'icône dans votre application
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        icon = new ImageIcon(icon.getImage().getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH));
 
         // Création et ajout des 3 RoomPanel avec espacement
         JPanel roomPanel1 = roomPanel(new Color(0, 255, 0, 127), "Chambre ocupée", icon, toDay);
@@ -116,7 +123,7 @@ public class TableauDeBord extends JPanel {
         GridBagConstraints gbcLabel = new GridBagConstraints();
         gbcLabel.gridx = 0;
         gbcLabel.gridy = 0;
-        gbcLabel.insets = new Insets(0, 0, 65, 0);
+        gbcLabel.insets = new Insets(0, 0, 60, 0);
         gbcLabel.anchor = GridBagConstraints.WEST; // Alignement à gauche
 
         JLabel label2 = new JLabel(icon);
