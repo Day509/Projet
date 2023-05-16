@@ -15,8 +15,13 @@ public class Generate {
                 p = h;
                 p.setListClient(c.getClients());
                 p.setListChambres(listRoom.getRooms());
+                
                 for (int i = 0; i < p.getlistClient().size(); i++) {
                         allReservations.add(new CreateReservation(p.getlistClient().get(i)));
+                }
+                for (int i = 0; i < p.getListChambres().size(); i++) {
+                        Chambre room = p.getListChambres().get(i);
+                        room.ajoutResa(allReservations.get(i).getReservation());
                 }
                 // afficher les clients
                 /*
