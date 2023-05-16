@@ -25,10 +25,11 @@ public class SideBarControl implements ActionListener{
     JPanel section2;
     JPanel section3;
     JPanel section4;
+    WeekPanel w;
     //JPanel mainContent;
 
     public SideBarControl(JButton dashButton,JButton roomButton,JButton reservButton,JButton youHotelButton
-    ,JPanel section1,JPanel section2,JPanel section3, JPanel section4) {
+    ,JPanel section1,JPanel section2,JPanel section3, JPanel section4, WeekPanel week) {
         this.dashButton = dashButton;
         this.roomButton = roomButton;
         this.reservButton = reservButton;
@@ -37,6 +38,7 @@ public class SideBarControl implements ActionListener{
         this.section2 = section2;
         this.section3 = section3;
         this.section4 = section4;
+        w = week;
      }
 
     @Override
@@ -48,6 +50,7 @@ public class SideBarControl implements ActionListener{
             section3.setVisible(false);
             section4.setVisible(false);
             section1.setVisible(true);
+            w.setVisible(true);
             //mainContent=section1;
             
             //section4.hide();
@@ -57,6 +60,8 @@ public class SideBarControl implements ActionListener{
             section3.setVisible(false);
             section4.setVisible(false);
             section2.setVisible(true);
+            w.setVisible(true);
+
             
             //section3.setVisible(false);
             //section2.setVisible(true);
@@ -67,6 +72,8 @@ public class SideBarControl implements ActionListener{
             section2.setVisible(false);
             section4.setVisible(false);
             section3.setVisible(true);
+            w.setVisible(false);
+
            
         } else if (button == youHotelButton) {
             // Faire quelque chose lorsque le bouton 4 est cliqué
@@ -74,6 +81,8 @@ public class SideBarControl implements ActionListener{
             section2.setVisible(false);
             section3.setVisible(false);
             section4.setVisible(true);
+            w.setVisible(false);
+
         }
     }
 }

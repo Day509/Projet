@@ -16,6 +16,7 @@ public class Dashboard extends JPanel {
     JPanel section2 ;
     JPanel section3 ;
     JPanel section4 ; 
+    WeekPanel week;
 
     // section4 = new Section4();
 
@@ -36,6 +37,7 @@ public class Dashboard extends JPanel {
         section2 = new RoomPage(hotel);
         section3 = new ReservPage(hotel);
         section4 = new yourHotel(hotel);
+        week = new WeekPanel();
         
         // Affichage de la section 1 par défaut
         panelContainer = new JPanel();
@@ -62,13 +64,11 @@ public class Dashboard extends JPanel {
         JPanel sideBar = sidebar();
         // gestion des boutttons de la sidebare
         SideBarControl SideBarControl = new SideBarControl(dashButton, roomButton, reservButton, youHotelButton,
-                section1, section2, section3, section4);
+                section1, section2, section3, section4, week);
         dashButton.addActionListener(SideBarControl);
         roomButton.addActionListener(SideBarControl);
         reservButton.addActionListener(SideBarControl);
         youHotelButton.addActionListener(SideBarControl);
-
-        JPanel wPanel = new WeekPanel();
 
         GridBagConstraints gbcSideBar = new GridBagConstraints();
 
@@ -83,7 +83,7 @@ public class Dashboard extends JPanel {
         GridBagConstraints gbcWeekPanel = new GridBagConstraints(); // contraintes
         gbcWeekPanel.anchor = GridBagConstraints.EAST; // alignement
         gbcWeekPanel.insets = new Insets(0, 0, 5, 20); // margin
-        panel.add(wPanel, gbcWeekPanel);
+        panel.add(week, gbcWeekPanel);
 
         // Définition des contraintes pour le mainContent
         GridBagConstraints gbcmainContent = new GridBagConstraints(); // contraintes
