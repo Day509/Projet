@@ -1,7 +1,7 @@
 package Model;
 
 import java.time.LocalDate;
-import java.util.Vector;
+import java.util.*;
 
 public class Hotel {
 
@@ -9,12 +9,14 @@ public class Hotel {
     private String adresse;
     private Vector<Chambre> listChambres;
     private Vector<Client> listClient;
+    private Vector<Reservation> listReservations;
 
     public Hotel(String nom, String adresse) {
         this.nom = nom;
         this.adresse = adresse;
         this.listChambres = new Vector<Chambre>();// prq Set et pas vector ??
         this.listClient = new Vector<Client>();
+        this.listReservations = new Vector<Reservation>();
     }
 
     public String getNom() {
@@ -49,12 +51,13 @@ public class Hotel {
         this.listClient = listClient;
     }
 
-    public Client getClientByName(String nom) { // retourne le client apartir de son nom
+    public Client getClientByName(String nom, String prenom) { // retourne le client apartir de son nom
         for (int i = 0; i < listClient.size(); i++) {
-            if (listClient.get(i).getNom().equals(nom)) {
+            if (listClient.get(i).getNom().equals(nom) && listClient.get(i).getPrenom().equals(prenom)) {
                 return listClient.get(i);
             }
             ;
+            return listClient.get(i);
         }
         return null;
     }
@@ -70,30 +73,38 @@ public class Hotel {
     }
 
     public Vector<Chambre> getFreeRooms(LocalDate deb, LocalDate fin) {
-        Vector<Chambre> listChambresDispo = new Vector<Chambre>();
-        for (Chambre chambre : listChambres) {
-            for(Reservation reservation : chambre.getReservations()){
-                if (reservation.DateDebut.isBefore(fin) && reservation.DateDeFin.isAfter(deb)) {
-                    listChambresDispo.add(chambre);
-                }                
-            }
-            
-        }
-        return listChambresDispo; // parcour les chambre et renvoi les chambres dispo
+        return null; // parcour les chambre et renvoi les chambres dispo
     }
 
     public void ajouterChambre(Chambre chambre) {
-
+        this.listChambres.add(chambre);
     }
 
     public void ajouterClient(Client client) {
 
     }
 
-    public static void main(String[] args) {
-
+    public Vector<Reservation> getReservations() {
+        return listReservations;
     }
-    // TOUS SE QUE VOUS AVEZ COMME METHODE FACTURE OU UN TRUC DU GENRE DOIT ETRES
-    // SUPRIMER CAR C DES CALCULE ...
+//pour recuperer la reservation avec l'id et faire la facture....
+    public Reservation getReservationById(int id) {
+        for (Reservation reservation : listReservations) {
+            if (reservation.getId() == id) {
+                return reservation;
+            }
+        }
+        return null;
+    }
+    public void setReservations(Vector<Reservation> listReservations) {
+        this.listReservations = listReservations;
+    }
 
+    public void ajoutResa(Reservation reservation) {
+        listReservations.add(reservation);
+    }
+
+    public void annuleResa(Reservation reservation) {
+        listReservations.remove(reservation);
+    }
 }

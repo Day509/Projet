@@ -35,7 +35,11 @@ public class Reservation {
         return this.Client;
     }
 
-    public int getResaNum() {
+    public Reservation getResaNum(int id) {
+        return this;
+    }
+
+    public int getId() {
         return this.id;
     }
 
